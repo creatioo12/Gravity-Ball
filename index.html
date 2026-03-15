@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Gravity Drift: Earth Edition</title>
     <style>
         :root {
@@ -42,16 +44,33 @@
         }
 
         @keyframes microShake {
-            0% { transform: translate(0,0); }
-            20% { transform: translate(-8px, 5px); }
-            40% { transform: translate(8px, -5px); }
-            60% { transform: translate(-5px, 2px); }
-            80% { transform: translate(5px, -2px); }
-            100% { transform: translate(0,0); }
+            0% {
+                transform: translate(0, 0);
+            }
+
+            20% {
+                transform: translate(-8px, 5px);
+            }
+
+            40% {
+                transform: translate(8px, -5px);
+            }
+
+            60% {
+                transform: translate(-5px, 2px);
+            }
+
+            80% {
+                transform: translate(5px, -2px);
+            }
+
+            100% {
+                transform: translate(0, 0);
+            }
         }
 
         .shaking {
-            animation: microShake 0.15s cubic-bezier(.36,.07,.19,.97) both;
+            animation: microShake 0.15s cubic-bezier(.36, .07, .19, .97) both;
         }
 
         #orientation-overlay {
@@ -96,10 +115,10 @@
         /* --- SHIELD UI STYLES --- */
         #shield-hud-container {
             position: absolute;
-            top: 25px;
+            top: clamp(10px, 3vh, 25px);
             left: 50%;
             transform: translateX(-50%);
-            width: 340px;
+            width: clamp(260px, 80vw, 340px);
             z-index: 200;
             display: none;
             flex-direction: column;
@@ -129,8 +148,15 @@
         }
 
         @keyframes iconPulse {
-            from { transform: scale(1); filter: drop-shadow(0 0 2px var(--shield-glow)); }
-            to { transform: scale(1.3); filter: drop-shadow(0 0 12px var(--shield-glow)); }
+            from {
+                transform: scale(1);
+                filter: drop-shadow(0 0 2px var(--shield-glow));
+            }
+
+            to {
+                transform: scale(1.3);
+                filter: drop-shadow(0 0 12px var(--shield-glow));
+            }
         }
 
         .shield-progress-bg {
@@ -139,8 +165,8 @@
             height: 12px;
             border-radius: 20px;
             padding: 2px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(4px);
             overflow: hidden;
         }
@@ -156,22 +182,22 @@
         }
 
         #shield-label {
-            font-size: 10px;
+            font-size: clamp(8px, 1.5vmin, 10px);
             font-weight: 900;
             color: #4ade80;
             text-transform: uppercase;
             margin-top: 6px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
             letter-spacing: 2px;
         }
 
         /* --- MOBILE SHIELD BUTTON --- */
         #btnShield {
             position: absolute;
-            bottom: 20px;
-            left: 10px;
-            width: 54px; 
-            height: 54px; 
+            bottom: clamp(10px, 2vh, 20px);
+            left: clamp(10px, 2vw, 10px);
+            width: clamp(40px, 10vmin, 54px);
+            height: clamp(40px, 10vmin, 54px);
             background: rgba(15, 23, 42, 0.8);
             border: 1.5px solid #fff;
             border-radius: 14px;
@@ -181,7 +207,7 @@
             z-index: 150;
             cursor: pointer;
             backdrop-filter: blur(5px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
             transition: transform 0.1s, background 0.3s, z-index 0.3s;
         }
 
@@ -207,9 +233,17 @@
         }
 
         @keyframes shieldPulse {
-            0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7); }
-            70% { box-shadow: 0 0 0 12px rgba(74, 222, 128, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+            0% {
+                box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 12px rgba(74, 222, 128, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(74, 222, 128, 0);
+            }
         }
 
         .pulse-ready {
@@ -225,14 +259,16 @@
             align-items: center;
             z-index: 100;
             padding: 20px;
-            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(125,211,252,0.8) 100%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(125, 211, 252, 0.8) 100%);
             backdrop-filter: blur(8px);
         }
 
-        .screen.active { display: flex; }
+        .screen.active {
+            display: flex;
+        }
 
         h1 {
-            font-size: clamp(40px, 12vw, 90px);
+            font-size: clamp(32px, 8vw, 90px);
             font-weight: 900;
             color: #0369a1;
             margin: 0;
@@ -244,16 +280,18 @@
         .subtitle {
             font-weight: 600;
             color: #075985;
-            margin-bottom: 40px;
+            margin-bottom: clamp(20px, 4vh, 40px);
+            font-size: clamp(14px, 3vw, 20px);
             letter-spacing: 2px;
         }
 
         .btn-group {
             display: flex;
             flex-direction: column;
+            align-items: center;
             gap: 15px;
             width: 100%;
-            max-width: 300px;
+            max-width: 100%;
         }
 
         .btn-row {
@@ -267,15 +305,19 @@
         }
 
         .btn {
-            padding: 20px;
-            border-radius: 20px;
+            padding: clamp(8px, 2vmin, 15px) clamp(10px, 3vw, 20px);
+            width: clamp(140px, 80%, 300px);
+            border-radius: clamp(10px, 2.5vmin, 15px);
             border: none;
-            font-size: 16px;
+            font-size: clamp(10px, 4vw, 18px);
+            /* More aggressive shrinking for text */
             font-weight: 800;
             text-transform: uppercase;
+            white-space: nowrap;
+            /* Prevent 2 lines */
             cursor: pointer;
             transition: all 0.2s;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
 
         .btn-locked {
@@ -297,23 +339,23 @@
 
         .btn:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
 
         /* --- LEVELS UI --- */
         .level-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            gap: 15px;
-            margin-bottom: 30px;
-            max-height: 55vh;
+            gap: clamp(8px, 2vmin, 15px);
+            margin-bottom: clamp(15px, 3vh, 30px);
+            max-height: 50vh;
             overflow-y: auto;
             padding: 10px;
         }
 
         .level-card {
-            width: 65px;
-            height: 75px;
+            width: clamp(45px, 9vmin, 65px);
+            height: clamp(55px, 11vmin, 75px);
             background: white;
             color: #0369a1;
             display: flex;
@@ -324,7 +366,7 @@
             font-weight: 900;
             cursor: pointer;
             transition: all 0.2s;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             border: 2px solid transparent;
             gap: 4px;
             position: relative;
@@ -344,7 +386,7 @@
         }
 
         .level-card .level-num {
-            font-size: 20px;
+            font-size: clamp(16px, 3.5vmin, 20px);
         }
 
         .level-card .level-stars {
@@ -377,8 +419,8 @@
 
         #hud {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: clamp(10px, 2vh, 20px);
+            right: clamp(10px, 2vw, 20px);
             display: flex;
             flex-direction: column;
             align-items: flex-end;
@@ -389,9 +431,9 @@
 
         .hud-item {
             background: var(--cloud-white);
-            padding: 8px 20px;
+            padding: clamp(5px, 1.5vmin, 8px) clamp(10px, 3vmin, 20px);
             border-radius: 50px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
             display: flex;
             align-items: center;
             gap: 10px;
@@ -401,30 +443,30 @@
         }
 
         .hud-best {
-            font-size: 14px;
-            padding: 4px 15px;
+            font-size: clamp(12px, 3vmin, 14px);
+            padding: clamp(4px, 1vmin, 6px) clamp(10px, 3vmin, 15px);
             opacity: 0.9;
         }
 
         /* --- CHALLENGE PANEL STYLES --- */
         #challenge-panel {
             position: absolute;
-            top: 75px;
-            right: 20px;
+            top: clamp(60px, 10vh, 75px);
+            right: clamp(10px, 2vw, 20px);
             background: rgba(15, 23, 42, 0.7);
             backdrop-filter: blur(4px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 10px 15px;
             border-radius: 15px;
             color: white;
-            font-size: 12px;
+            font-size: clamp(10px, 2.5vmin, 12px);
             font-weight: 800;
             display: none;
             flex-direction: column;
             gap: 4px;
             z-index: 10;
             pointer-events: none;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
             text-align: right;
             min-width: 140px;
         }
@@ -438,7 +480,7 @@
 
         .challenge-label {
             opacity: 0.7;
-            font-size: 9px;
+            font-size: clamp(8px, 1.5vmin, 9px);
             text-transform: uppercase;
         }
 
@@ -452,10 +494,10 @@
 
         #btnPause {
             position: absolute;
-            bottom: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
+            bottom: clamp(10px, 2vh, 20px);
+            right: clamp(10px, 2vw, 20px);
+            width: clamp(40px, 10vmin, 50px);
+            height: clamp(40px, 10vmin, 50px);
             background: var(--cloud-white);
             border: 2px solid #fff;
             border-radius: 50%;
@@ -464,7 +506,7 @@
             display: none;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 8px 166px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 166px rgba(0, 0, 0, 0.1);
             pointer-events: auto;
         }
 
@@ -472,14 +514,15 @@
             transform: scale(0.9);
         }
 
-        #gameOverBox, #pauseBox {
+        #gameOverBox,
+        #pauseBox {
             background: white;
-            padding: 30px 40px 40px 40px;
-            border-radius: 30px;
+            padding: clamp(15px, 3vmin, 30px) clamp(15px, 4vmin, 40px);
+            border-radius: clamp(15px, 3vmin, 30px);
             text-align: center;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
             max-width: 420px;
-            width: 90%;
+            width: clamp(280px, 90%, 420px);
             position: relative;
         }
 
@@ -531,24 +574,50 @@
         }
 
         @keyframes rotateDevice {
-            0% { transform: rotate(0deg); }
-            30% { transform: rotate(0deg); }
-            70% { transform: rotate(-90deg); }
-            100% { transform: rotate(-90deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            30% {
+                transform: rotate(0deg);
+            }
+
+            70% {
+                transform: rotate(-90deg);
+            }
+
+            100% {
+                transform: rotate(-90deg);
+            }
         }
 
         @keyframes arrowFade {
-            0% { opacity: 0; transform: scale(0.8) rotate(10deg); }
-            30% { opacity: 1; transform: scale(1) rotate(0deg); }
-            70% { opacity: 1; transform: scale(1) rotate(0deg); }
-            100% { opacity: 0; transform: scale(1.1) rotate(-10deg); }
+            0% {
+                opacity: 0;
+                transform: scale(0.8) rotate(10deg);
+            }
+
+            30% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+
+            70% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(1.1) rotate(-10deg);
+            }
         }
 
         /* Mission HUD */
         #mission-hud {
             position: absolute;
-            top: 20px;
-            left: 20px;
+            top: clamp(10px, 2vh, 20px);
+            left: clamp(10px, 2vw, 20px);
             z-index: 10;
             display: none;
         }
@@ -581,7 +650,7 @@
             width: 60px;
             height: 60px;
             fill: var(--star-empty);
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
             transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             transform: scale(0);
             opacity: 0;
@@ -595,52 +664,81 @@
         }
 
         /* Arc Formation */
-        .star-item:nth-child(1) { transform: scale(0) translateY(15px) rotate(-20deg); }
-        .star-item:nth-child(2) { transform: scale(0) translateY(-10px); width: 80px; height: 80px; }
-        .star-item:nth-child(3) { transform: scale(0) translateY(15px) rotate(20deg); }
+        .star-item:nth-child(1) {
+            transform: scale(0) translateY(15px) rotate(-20deg);
+        }
 
-        .star-item.earned:nth-child(1) { transform: scale(1) translateY(15px) rotate(-20deg); }
-        .star-item.earned:nth-child(2) { transform: scale(1.1) translateY(-10px); }
-        .star-item.earned:nth-child(3) { transform: scale(1) translateY(15px) rotate(20deg); }
+        .star-item:nth-child(2) {
+            transform: scale(0) translateY(-10px);
+            width: 80px;
+            height: 80px;
+        }
+
+        .star-item:nth-child(3) {
+            transform: scale(0) translateY(15px) rotate(20deg);
+        }
+
+        .star-item.earned:nth-child(1) {
+            transform: scale(1) translateY(15px) rotate(-20deg);
+        }
+
+        .star-item.earned:nth-child(2) {
+            transform: scale(1.1) translateY(-10px);
+        }
+
+        .star-item.earned:nth-child(3) {
+            transform: scale(1) translateY(15px) rotate(20deg);
+        }
 
         /* --- TUTORIAL UI --- */
         #tutorial-overlay {
-            display: none; 
-            position: absolute; 
-            inset: 0; 
-            pointer-events: none; 
-            z-index: 150; 
-            flex-direction: column; 
-            justify-content: center; 
+            display: none;
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 150;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            background: rgba(0,0,0,0); /* Default transparent, managed via JS */
+            background: rgba(0, 0, 0, 0);
+            /* Default transparent, managed via JS */
             transition: background 0.5s ease;
         }
+
         #tutorial-text {
-            font-size: 24px; 
-            font-weight: 900; 
-            color: #fff; 
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5); 
-            text-align: center; 
-            margin-bottom: 30px; 
-            background: rgba(15, 23, 42, 0.85); 
-            padding: 20px 30px; 
+            font-size: clamp(16px, 4vmin, 24px);
+            font-weight: 900;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            margin-bottom: 30px;
+            background: rgba(15, 23, 42, 0.85);
+            padding: clamp(12px, 3vmin, 20px) clamp(20px, 5vmin, 30px);
             border-radius: 20px;
-            border: 2px solid rgba(255,255,255,0.2);
-            max-width: 80%;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            max-width: 90%;
         }
+
         #tutorial-visual {
-            display: flex; 
+            display: flex;
             gap: 40px;
             align-items: center;
         }
-        @keyframes floatArrow {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
 
+        @keyframes floatArrow {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
     </style>
 </head>
+
 <body>
 
     <div id="orientation-overlay">
@@ -665,7 +763,10 @@
 
         <div id="shield-hud-container">
             <div class="shield-bar-wrapper">
-                <svg id="shield-icon-bar" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 2.18l7 3.12v4.7c0 4.67-3.13 8.94-7 10-3.87-1.06-7-5.33-7-10V6.3l7-3.12z"/></svg>
+                <svg id="shield-icon-bar" viewBox="0 0 24 24">
+                    <path
+                        d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 2.18l7 3.12v4.7c0 4.67-3.13 8.94-7 10-3.87-1.06-7-5.33-7-10V6.3l7-3.12z" />
+                </svg>
                 <div class="shield-progress-bg">
                     <div id="shieldLiquid" class="shield-liquid"></div>
                 </div>
@@ -674,16 +775,20 @@
         </div>
 
         <div id="btnShield">
-            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 2.18l7 3.12v4.7c0 4.67-3.13 8.94-7 10-3.87-1.06-7-5.33-7-10V6.3l7-3.12z"/></svg>
+            <svg viewBox="0 0 24 24">
+                <path
+                    d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 2.18l7 3.12v4.7c0 4.67-3.13 8.94-7 10-3.87-1.06-7-5.33-7-10V6.3l7-3.12z" />
+            </svg>
         </div>
 
         <div id="hud" style="display: none;">
             <div class="hud-item">
-                <span id="scoreLabel" style="font-size: 10px; opacity: 0.6;">JOURNEY</span>
+                <span id="scoreLabel"
+                    style="font-size: clamp(10px, 2vmin, 12px); opacity: 0.8; font-weight: 700;">JOURNEY</span>
                 <span id="scoreText">0000</span>m
             </div>
             <div class="hud-item hud-best" id="bestScoreHud">
-                <span style="font-size: 9px; opacity: 0.6;">BEST</span>
+                <span style="font-size: clamp(9px, 1.5vmin, 11px); opacity: 0.8; font-weight: 700;">BEST</span>
                 <span id="bestScoreText">0000</span>m
             </div>
         </div>
@@ -700,14 +805,35 @@
         </div>
 
         <div id="mission-hud" class="hud-item">
-            <span id="levelDisplay" style="font-size: 10px; opacity: 0.6; color: #ef4444;">GOAL</span>
+            <span id="levelDisplay"
+                style="font-size: clamp(10px, 2vmin, 12px); opacity: 0.8; color: #ef4444; font-weight: 700;">GOAL</span>
             <span id="goalText">0000</span>m
         </div>
 
         <button id="btnPause">
-            <svg id="pauseIcon" width="20" height="20" viewBox="0 0 24 24" fill="#0369a1"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-            <svg id="playIcon" width="20" height="20" viewBox="0 0 24 24" fill="#0369a1" style="display:none;"><path d="M8 5v14l11-7z"/></svg>
+            <svg id="pauseIcon" width="20" height="20" viewBox="0 0 24 24" fill="#0369a1">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+            </svg>
+            <svg id="playIcon" width="20" height="20" viewBox="0 0 24 24" fill="#0369a1" style="display:none;">
+                <path d="M8 5v14l11-7z" />
+            </svg>
         </button>
+
+        <div id="introPromptPanel"
+            style="display: none; position: fixed; inset: 0; z-index: 300; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); display: flex; justify-content: center; align-items: center;">
+            <div
+                style="background: rgba(255, 255, 255, 0.95); padding: clamp(20px, 4vmin, 40px); border-radius: clamp(15px, 3vmin, 30px); text-align: center; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2); max-width: 420px; width: clamp(280px, 90%, 420px); border: 2px solid rgba(255, 255, 255, 0.4);">
+                <h2
+                    style="color: #0369a1; font-size: clamp(24px, 6vw, 32px); font-weight: 900; margin-top: 0; margin-bottom: 10px;">
+                    First Time?</h2>
+                <p style="color: #64748b; font-weight: 600; margin-bottom: 25px; font-size: clamp(14px, 3vw, 16px);">
+                    Would you like to play the intro to learn the controls?</p>
+                <div class="btn-group" style="max-width: none;">
+                    <button class="btn btn-primary" id="btnYesIntro">Play Intro</button>
+                    <button class="btn btn-secondary" id="btnNoIntro">Skip to Game</button>
+                </div>
+            </div>
+        </div>
 
         <div id="homeScreen" class="screen active">
             <h1>Gravity Ball</h1>
@@ -728,10 +854,13 @@
 
         <div id="pauseScreen" class="screen">
             <div id="pauseBox">
-                <h2 style="color: #0369a1; font-size: 32px; font-weight: 900; margin-top: 0; margin-bottom: 10px;">Paused</h2>
+                <h2 style="color: #0369a1; font-size: 32px; font-weight: 900; margin-top: 0; margin-bottom: 10px;">
+                    Paused</h2>
                 <div class="stats-summary" id="pauseStats" style="display: none;">
-                    <span style="font-size: 18px; color: #64748b;">Score: <span id="pauseCurrentScore" style="display: inline; color: #0369a1;">0</span>m</span>
-                    <span style="font-size: 14px; color: #94a3b8;">Best: <span id="pauseBestScore" style="display: inline;">0</span>m</span>
+                    <span style="font-size: clamp(16px, 3.5vmin, 20px); color: #64748b;">Score: <span
+                            id="pauseCurrentScore" style="display: inline; color: #0369a1;">0</span>m</span>
+                    <span style="font-size: clamp(12px, 2.5vmin, 16px); color: #94a3b8;">Best: <span id="pauseBestScore"
+                            style="display: inline;">0</span>m</span>
                 </div>
                 <div class="btn-group" style="max-width: none;">
                     <button class="btn btn-primary" id="btnResume">Resume Flight</button>
@@ -744,16 +873,31 @@
             <div id="gameOverBox">
                 <!-- Star Rating Display at Top of Success Panel -->
                 <div id="star-rating-panel">
-                    <svg class="star-item" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                    <svg class="star-item" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                    <svg class="star-item" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <svg class="star-item" viewBox="0 0 24 24">
+                        <path
+                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                    </svg>
+                    <svg class="star-item" viewBox="0 0 24 24">
+                        <path
+                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                    </svg>
+                    <svg class="star-item" viewBox="0 0 24 24">
+                        <path
+                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                    </svg>
                 </div>
 
-                <h2 id="gameOverTitle" style="color: #ef4444; font-size: 32px; font-weight: 900; margin-top: 0;">Journey Ended</h2>
+                <h2 id="gameOverTitle" style="color: #ef4444; font-size: 32px; font-weight: 900; margin-top: 0;">Journey
+                    Ended</h2>
                 <div class="stats-summary">
-                    <p id="finalScore" style="font-size: 18px; color: #64748b; margin: 0;">You drifted 0 meters.</p>
-                    <p id="missionStats" style="font-size: 13px; color: #94a3b8; margin: 8px 0; display: none;"></p>
-                    <p id="bestScoreEnd" style="font-size: 14px; color: #94a3b8; margin: 5px 0 20px 0; display: none;">Best Journey: 0m</p>
+                    <p id="finalScore" style="font-size: clamp(16px, 3.5vmin, 20px); color: #64748b; margin: 0;">You
+                        drifted 0 meters.</p>
+                    <p id="missionStats"
+                        style="font-size: clamp(12px, 2.5vmin, 15px); color: #94a3b8; margin: 8px 0; display: none;">
+                    </p>
+                    <p id="bestScoreEnd"
+                        style="font-size: clamp(12px, 2.5vmin, 16px); color: #94a3b8; margin: 5px 0 20px 0; display: none;">
+                        Best Journey: 0m</p>
                 </div>
                 <div class="btn-group" style="max-width: none;" id="gameOverBtnGroup">
                     <button class="btn btn-primary" id="btnRetry">Try Again</button>
@@ -770,1623 +914,1679 @@
         </div>
     </div>
 
-<script>
-    // Star Save Logic
-    let levelStars = JSON.parse(localStorage.getItem('gravityDrift_stars') || '{}');
+    <script>
 
-    // --- PREDEFINED SEED LOGIC ---
-    let currentSeed = 0;
-    function seededRandom() {
-        currentSeed = (currentSeed * 9301 + 49297) % 233280;
-        return currentSeed / 233280;
-    }
+        // Star Save Logic
+        let levelStars = JSON.parse(localStorage.getItem('gravityDrift_stars') || '{}');
 
-    const canvas = document.getElementById('gameCanvas');
-    const ctx = canvas.getContext('2d');
-    const gameWrapper = document.getElementById('game-wrapper');
-    
-    const screens = {
-        home: document.getElementById('homeScreen'),
-        levels: document.getElementById('levelsScreen'),
-        gameOver: document.getElementById('gameOverScreen'),
-        pause: document.getElementById('pauseScreen')
-    };
-    const hud = document.getElementById('hud');
-    const missionHud = document.getElementById('mission-hud');
-    const scoreText = document.getElementById('scoreText');
-    const goalText = document.getElementById('goalText');
-    const levelDisplay = document.getElementById('levelDisplay');
-    const bestScoreText = document.getElementById('bestScoreText');
-    const btnPause = document.getElementById('btnPause');
-    const pauseIcon = document.getElementById('pauseIcon');
-    const playIcon = document.getElementById('playIcon');
-    const btnShield = document.getElementById('btnShield');
-    const bestScoreHud = document.getElementById('bestScoreHud');
-
-    const challengePanel = document.getElementById('challenge-panel');
-    const challengeTimer = document.getElementById('challenge-timer');
-    const challengeFlips = document.getElementById('challenge-flips');
-
-    // Tutorial UI Elements
-    const tutorialOverlay = document.getElementById('tutorial-overlay');
-    const tutorialText = document.getElementById('tutorial-text');
-    const tutorialVisual = document.getElementById('tutorial-visual');
-
-    const shieldLiquid = document.getElementById('shieldLiquid');
-    const shieldLabel = document.getElementById('shield-label');
-    const shieldHud = document.getElementById('shield-hud-container');
-    const shieldIconBar = document.getElementById('shield-icon-bar');
-    const SHIELD_MAX_JOURNEY = 400; 
-    const SHIELD_DEPLETE_SPEED = 0.6; 
-
-    const V_WIDTH = 1280;
-    const V_HEIGHT = 720;
-    const BALL_RADIUS = 16;
-    const IDEAL_X = 260;
-    const BASE_GRAVITY = 0.52;
-    const BASE_SCROLL_SPEED = 7.5;
-    const SEGMENT_WIDTH = 80;
-    const DEAD_ZONE_X = 5; 
-    const RIGHT_BOUND_X = V_WIDTH - 20; 
-    
-    const MIN_VERTICAL_STEP = 120; 
-    const MIN_GAP = 220; 
-    const MAX_GAP = 550; 
-    const MIN_WALL_MARGIN = 60; 
-    
-    const SPIKE_BASE_SIZE = 40;
-    const SPIKE_HEIGHT = 50;
-    
-    const WASP_SIZE = 40;
-    const WASP_SPEED = 3.5; 
-
-    const PULSE_WIDTH = 50;
-    const PULSE_HEIGHT = 40;
-    const PULSE_SPEED = 5.0;
-    const PULSE_COLOR = '#c894ee';
-
-    let gameActive = false;
-    let isPaused = false;
-    let score = 0;
-    let bestScore = 0;
-    let gravityDir = 1;
-    let canFlipMidAir = true;
-    
-    let isDashing = false;
-    let lastTouchTime = 0;
-    
-    let shieldMeter = 0; 
-    let isShieldActive = false;
-    let lastProcessedScore = 0;
-
-    // Track statistics for star calculation
-    let gravityFlips = 0;
-    let levelStartTime = 0;
-    let accumulatedTime = 0;
-
-    // Level Management
-    let gameMode = 'unlimited'; // 'unlimited' or 'level' or 'tutorial'
-    let currentLevel = 1;
-    let levelGoal = 0;
-    let tutorialPhase = 0;
-
-    const LEVELS_CONFIG = {
-        1: { goal: 300, speedBoost: 0, gravityScale: 1.0, gap: 400, enemyChance: 0.1 },
-        2: { goal: 300, speedBoost: 0.5, gravityScale: 1.02, gap: 390, enemyChance: 0.15 },
-        3: { goal: 400, speedBoost: 1.0, gravityScale: 1.05, gap: 380, enemyChance: 0.2 },
-        4: { goal: 400, speedBoost: 1.2, gravityScale: 1.08, gap: 375, enemyChance: 0.25 },
-        5: { goal: 500, speedBoost: 1.5, gravityScale: 1.1, gap: 360, enemyChance: 0.3 },
-        6: { goal: 500, speedBoost: 1.8, gravityScale: 1.13, gap: 350, enemyChance: 0.35 },
-        7: { goal: 700, speedBoost: 2.2, gravityScale: 1.15, gap: 340, enemyChance: 0.4 },
-        8: { goal: 700, speedBoost: 2.5, gravityScale: 1.18, gap: 330, enemyChance: 0.45 },
-        9: { goal: 800, speedBoost: 2.8, gravityScale: 1.2, gap: 320, enemyChance: 0.5 },
-        10: { goal: 1000, speedBoost: 3.2, gravityScale: 1.25, gap: 310, enemyChance: 0.55 },
-        11: { goal: 1100, speedBoost: 3.5, gravityScale: 1.3, gap: 300, enemyChance: 0.6 },
-        12: { goal: 1100, speedBoost: 3.8, gravityScale: 1.33, gap: 290, enemyChance: 0.65 },
-        13: { goal: 1300, speedBoost: 4.2, gravityScale: 1.35, gap: 280, enemyChance: 0.7 },
-        14: { goal: 1300, speedBoost: 4.5, gravityScale: 1.38, gap: 275, enemyChance: 0.72 },
-        15: { goal: 1500, speedBoost: 4.8, gravityScale: 1.4, gap: 270, enemyChance: 0.75 },
-        16: { goal: 1500, speedBoost: 5.2, gravityScale: 1.43, gap: 265, enemyChance: 0.78 },
-        17: { goal: 1700, speedBoost: 5.5, gravityScale: 1.45, gap: 260, enemyChance: 0.8 },
-        18: { goal: 2000, speedBoost: 6.0, gravityScale: 1.5, gap: 250, enemyChance: 0.85 },
-        19: { goal: 3000, speedBoost: 6.5, gravityScale: 1.55, gap: 240, enemyChance: 0.9 },
-        20: { goal: 4000, speedBoost: 7.5, gravityScale: 1.6, gap: 220, enemyChance: 1.0 }
-    };
-
-    let ball = { x: IDEAL_X, y: V_HEIGHT/2, vy: 0, vx: 0, scaleX: 1, scaleY: 1 };
-    let segments = [];
-    let spikes = [];
-    let wasps = []; 
-    let pulses = []; 
-    let clouds = [];
-    let mountains = [];
-    let trail = [];
-    let bursts = [];
-    let frameCount = 0;
-    let currentScrollSpeed = BASE_SCROLL_SPEED;
-    
-    let currentTop = V_HEIGHT * 0.25, currentBottom = V_HEIGHT * 0.75;
-    let stepTop = 0, stepBottom = 0;
-    let flatTopCounter = 0;
-    let flatBottomCounter = 0;
-    let metersSinceShift = 0; 
-    
-    let lastWaspX = 0;
-    let lastPulseX = 0; 
-    let consecutiveSpikesCount = 0; 
-    
-    let backgroundShapes = [];
-    let backgroundStars = [];
-    let bgGridOffset = 0;
-    let lastTime = 0;
-
-    const BALL_COLOR = '#4ade80';
-
-    function resize() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        const scale = Math.min(canvas.width / V_WIDTH, canvas.height / V_HEIGHT);
-        const offsetX = (canvas.width - V_WIDTH * scale) / 2;
-        const offsetY = (canvas.height - V_HEIGHT * scale) / 2;
-        ctx.setTransform(scale, 0, 0, scale, offsetX, offsetY);
-    }
-
-    function resetMenuBackground() {
-        mountains = [];
-        clouds = [];
-        for(let i=0; i<6; i++) {
-            mountains.push({
-                x: i * 300,
-                w: 400 + Math.random() * 200,
-                h: 200 + Math.random() * 150,
-                color: `rgba(14, 165, 233, ${0.1 + (i*0.02)})`
-            });
+        // --- PREDEFINED SEED LOGIC ---
+        let currentSeed = 0;
+        function seededRandom() {
+            currentSeed = (currentSeed * 9301 + 49297) % 233280;
+            return currentSeed / 233280;
         }
-        for(let i=0; i<12; i++) {
-            clouds.push({
-                x: Math.random() * V_WIDTH,
-                y: Math.random() * V_HEIGHT * 0.6,
-                w: 100 + Math.random() * 150,
-                h: 40 + Math.random() * 40,
-                speed: 0.2 + Math.random() * 0.5
-            });
-        }
-    }
 
-    function updateLevelGrid() {
-        const grid = document.getElementById('levelGrid');
-        grid.innerHTML = '';
-        
-        let highestCompleted = 0;
-        for (let k = 1; k <= 20; k++) {
-            if (levelStars[k]) highestCompleted = k;
-        }
-        const unlockedUntil = highestCompleted + 1;
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const gameWrapper = document.getElementById('game-wrapper');
 
-        for (let i = 1; i <= 20; i++) {
-            const card = document.createElement('div');
-            const isLocked = i > unlockedUntil;
-            card.className = `level-card ${isLocked ? 'locked' : ''}`;
-            
-            const earned = levelStars[i] || 0;
-            
-            let starHtml = '';
-            for(let s=1; s<=3; s++) {
-                starHtml += `<svg class="mini-star ${s <= earned ? 'earned' : ''}" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`;
+        const screens = {
+            home: document.getElementById('homeScreen'),
+            levels: document.getElementById('levelsScreen'),
+            gameOver: document.getElementById('gameOverScreen'),
+            pause: document.getElementById('pauseScreen')
+        };
+        const hud = document.getElementById('hud');
+        const missionHud = document.getElementById('mission-hud');
+        const scoreText = document.getElementById('scoreText');
+        const goalText = document.getElementById('goalText');
+        const levelDisplay = document.getElementById('levelDisplay');
+        const bestScoreText = document.getElementById('bestScoreText');
+        const btnPause = document.getElementById('btnPause');
+        const pauseIcon = document.getElementById('pauseIcon');
+        const playIcon = document.getElementById('playIcon');
+        const btnShield = document.getElementById('btnShield');
+        const bestScoreHud = document.getElementById('bestScoreHud');
+
+        const challengePanel = document.getElementById('challenge-panel');
+        const challengeTimer = document.getElementById('challenge-timer');
+        const challengeFlips = document.getElementById('challenge-flips');
+
+        // Tutorial UI Elements
+        const tutorialOverlay = document.getElementById('tutorial-overlay');
+        const tutorialText = document.getElementById('tutorial-text');
+        const tutorialVisual = document.getElementById('tutorial-visual');
+
+        const shieldLiquid = document.getElementById('shieldLiquid');
+        const shieldLabel = document.getElementById('shield-label');
+        const shieldHud = document.getElementById('shield-hud-container');
+        const shieldIconBar = document.getElementById('shield-icon-bar');
+        const SHIELD_MAX_JOURNEY = 400;
+        const SHIELD_DEPLETE_SPEED = 0.6;
+
+        const V_WIDTH = 1280;
+        const V_HEIGHT = 720;
+        const BALL_RADIUS = 16;
+        const IDEAL_X = 260;
+        const BASE_GRAVITY = 0.52;
+        const BASE_SCROLL_SPEED = 7.5;
+        const SEGMENT_WIDTH = 80;
+        const DEAD_ZONE_X = 5;
+        const RIGHT_BOUND_X = V_WIDTH - 20;
+
+        const MIN_VERTICAL_STEP = 120;
+        const MIN_GAP = 220;
+        const MAX_GAP = 550;
+        const MIN_WALL_MARGIN = 60;
+
+        const SPIKE_BASE_SIZE = 40;
+        const SPIKE_HEIGHT = 50;
+
+        const WASP_SIZE = 40;
+        const WASP_SPEED = 3.5;
+
+        const PULSE_WIDTH = 50;
+        const PULSE_HEIGHT = 40;
+        const PULSE_SPEED = 5.0;
+        const PULSE_COLOR = '#c894ee';
+
+        let gameActive = false;
+        let isPaused = false;
+        let score = 0;
+        let bestScore = 0;
+        let gravityDir = 1;
+        let canFlipMidAir = true;
+
+        let isDashing = false;
+        let lastTouchTime = 0;
+
+        let shieldMeter = 0;
+        let isShieldActive = false;
+        let lastProcessedScore = 0;
+
+        // Track statistics for star calculation
+        let gravityFlips = 0;
+        let levelStartTime = 0;
+        let accumulatedTime = 0;
+
+        // Level Management
+        let gameMode = 'unlimited'; // 'unlimited' or 'level' or 'tutorial'
+        let currentLevel = 1;
+        let levelGoal = 0;
+        let tutorialPhase = 0;
+
+        const LEVELS_CONFIG = {
+            1: { goal: 300, speedBoost: 0, gravityScale: 1.0, gap: 400, enemyChance: 0.1 },
+            2: { goal: 300, speedBoost: 0.5, gravityScale: 1.02, gap: 390, enemyChance: 0.15 },
+            3: { goal: 400, speedBoost: 1.0, gravityScale: 1.05, gap: 380, enemyChance: 0.2 },
+            4: { goal: 400, speedBoost: 1.2, gravityScale: 1.08, gap: 375, enemyChance: 0.25 },
+            5: { goal: 500, speedBoost: 1.5, gravityScale: 1.1, gap: 360, enemyChance: 0.3 },
+            6: { goal: 500, speedBoost: 1.8, gravityScale: 1.13, gap: 350, enemyChance: 0.35 },
+            7: { goal: 700, speedBoost: 2.2, gravityScale: 1.15, gap: 340, enemyChance: 0.4 },
+            8: { goal: 700, speedBoost: 2.5, gravityScale: 1.18, gap: 330, enemyChance: 0.45 },
+            9: { goal: 800, speedBoost: 2.8, gravityScale: 1.2, gap: 320, enemyChance: 0.5 },
+            10: { goal: 1000, speedBoost: 3.2, gravityScale: 1.25, gap: 310, enemyChance: 0.55 },
+            11: { goal: 1100, speedBoost: 3.5, gravityScale: 1.3, gap: 300, enemyChance: 0.6 },
+            12: { goal: 1100, speedBoost: 3.8, gravityScale: 1.33, gap: 290, enemyChance: 0.65 },
+            13: { goal: 1300, speedBoost: 4.2, gravityScale: 1.35, gap: 280, enemyChance: 0.7 },
+            14: { goal: 1300, speedBoost: 4.5, gravityScale: 1.38, gap: 275, enemyChance: 0.72 },
+            15: { goal: 1500, speedBoost: 4.8, gravityScale: 1.4, gap: 270, enemyChance: 0.75 },
+            16: { goal: 1500, speedBoost: 5.2, gravityScale: 1.43, gap: 265, enemyChance: 0.78 },
+            17: { goal: 1700, speedBoost: 5.5, gravityScale: 1.45, gap: 260, enemyChance: 0.8 },
+            18: { goal: 2000, speedBoost: 6.0, gravityScale: 1.5, gap: 250, enemyChance: 0.85 },
+            19: { goal: 3000, speedBoost: 6.5, gravityScale: 1.55, gap: 240, enemyChance: 0.9 },
+            20: { goal: 4000, speedBoost: 7.5, gravityScale: 1.6, gap: 220, enemyChance: 1.0 }
+        };
+
+        let ball = { x: IDEAL_X, y: V_HEIGHT / 2, vy: 0, vx: 0, scaleX: 1, scaleY: 1 };
+        let segments = [];
+        let spikes = [];
+        let wasps = [];
+        let pulses = [];
+        let clouds = [];
+        let mountains = [];
+        let trail = [];
+        let bursts = [];
+        let frameCount = 0;
+        let currentScrollSpeed = BASE_SCROLL_SPEED;
+
+        let currentTop = V_HEIGHT * 0.25, currentBottom = V_HEIGHT * 0.75;
+        let stepTop = 0, stepBottom = 0;
+        let flatTopCounter = 0;
+        let flatBottomCounter = 0;
+        let metersSinceShift = 0;
+
+        let lastWaspX = 0;
+        let lastPulseX = 0;
+        let consecutiveSpikesCount = 0;
+
+        let backgroundShapes = [];
+        let backgroundStars = [];
+        let bgGridOffset = 0;
+        let lastTime = 0;
+
+        const BALL_COLOR = '#4ade80';
+
+        function resize() {
+            const dpr = window.devicePixelRatio || 1;
+            const w = window.innerWidth;
+            const h = window.innerHeight;
+
+            canvas.style.width = w + 'px';
+            canvas.style.height = h + 'px';
+            canvas.width = w * dpr;
+            canvas.height = h * dpr;
+
+            const logicalScale = Math.min(w / V_WIDTH, h / V_HEIGHT);
+            const scale = logicalScale * dpr;
+
+            const offsetX = (w - V_WIDTH * logicalScale) / 2;
+            const offsetY = (h - V_HEIGHT * logicalScale) / 2;
+
+            ctx.setTransform(scale, 0, 0, scale, offsetX * dpr, offsetY * dpr);
+        }
+
+        function resetMenuBackground() {
+            mountains = [];
+            clouds = [];
+            for (let i = 0; i < 6; i++) {
+                mountains.push({
+                    x: i * 300,
+                    w: 400 + Math.random() * 200,
+                    h: 200 + Math.random() * 150,
+                    color: `rgba(14, 165, 233, ${0.1 + (i * 0.02)})`
+                });
             }
+            for (let i = 0; i < 12; i++) {
+                clouds.push({
+                    x: Math.random() * V_WIDTH,
+                    y: Math.random() * V_HEIGHT * 0.6,
+                    w: 100 + Math.random() * 150,
+                    h: 40 + Math.random() * 40,
+                    speed: 0.2 + Math.random() * 0.5
+                });
+            }
+        }
 
-            if (isLocked) {
-                card.innerHTML = `
+        function updateLevelGrid() {
+            const grid = document.getElementById('levelGrid');
+            grid.innerHTML = '';
+
+            let highestCompleted = 0;
+            for (let k = 1; k <= 20; k++) {
+                if (levelStars[k]) highestCompleted = k;
+            }
+            const unlockedUntil = highestCompleted + 1;
+
+            for (let i = 1; i <= 20; i++) {
+                const card = document.createElement('div');
+                const isLocked = i > unlockedUntil;
+                card.className = `level-card ${isLocked ? 'locked' : ''}`;
+
+                const earned = levelStars[i] || 0;
+
+                let starHtml = '';
+                for (let s = 1; s <= 3; s++) {
+                    starHtml += `<svg class="mini-star ${s <= earned ? 'earned' : ''}" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`;
+                }
+
+                if (isLocked) {
+                    card.innerHTML = `
                     <svg class="lock-icon" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
                     <span class="level-num">${i}</span>
                 `;
-            } else {
-                card.innerHTML = `
+                } else {
+                    card.innerHTML = `
                     <span class="level-num">${i}</span>
                     <div class="level-stars">${starHtml}</div>
                 `;
-                card.onclick = () => {
-                    currentLevel = i;
-                    gameMode = 'level';
-                    resetGame();
-                    gameActive = true;
-                    showScreen('game');
-                };
+                    card.onclick = () => {
+                        currentLevel = i;
+                        gameMode = 'level';
+                        resetGame();
+                        gameActive = true;
+                        showScreen('game');
+                    };
+                }
+                grid.appendChild(card);
             }
-            grid.appendChild(card);
         }
-    }
 
-    function updateMainMenuButtons() {
-        let totalStars = Object.values(levelStars).reduce((a, b) => a + b, 0);
-        const btnToStart = document.getElementById('btnToStart');
-        if (totalStars < 10) {
-            btnToStart.classList.add('btn-locked');
-            btnToStart.innerHTML = `
+        function updateMainMenuButtons() {
+            let totalStars = Object.values(levelStars).reduce((a, b) => a + b, 0);
+            const btnToStart = document.getElementById('btnToStart');
+            if (totalStars < 10) {
+                btnToStart.classList.add('btn-locked');
+                btnToStart.innerHTML = `
                 <div>Take Flight</div>
                 <div style="font-size: 10px; margin-top: 5px; opacity: 0.9; display: flex; align-items: center; justify-content: center; gap: 4px;">
                     <svg style="width: 12px; height: 12px; fill: white;" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
                     Collect 10 Stars
                 </div>
             `;
-        } else {
-            btnToStart.classList.remove('btn-locked');
-            btnToStart.innerHTML = `Take Flight`;
-        }
-    }
-
-    function init() {
-        window.addEventListener('resize', resize);
-        resize();
-        resetMenuBackground();
-        for(let i=0; i<20; i++) {
-            backgroundShapes.push({
-                x: Math.random() * (V_WIDTH + 800) - 400,
-                y: Math.random() * V_HEIGHT,
-                size: 20 + Math.random() * 100,
-                parallax: 0.1 + Math.random() * 0.2
-            });
-        }
-        for(let i=0; i<50; i++) {
-            backgroundStars.push({
-                x: Math.random() * (V_WIDTH + 800) - 400,
-                y: Math.random() * V_HEIGHT,
-                size: Math.random() * 2 + 1,
-                opacity: Math.random(),
-                blinkSpeed: 0.01 + Math.random() * 0.03
-            });
+            } else {
+                btnToStart.classList.remove('btn-locked');
+                btnToStart.innerHTML = `Take Flight`;
+            }
         }
 
-        updateLevelGrid();
-        
-        // CHECK TUTORIAL STATUS
-        if (!localStorage.getItem('natureDrift_tutorial_complete')) {
-            startTutorial();
-        } else {
+        function init() {
+            window.addEventListener('resize', resize);
+            resize();
+            resetMenuBackground();
+            for (let i = 0; i < 20; i++) {
+                backgroundShapes.push({
+                    x: Math.random() * (V_WIDTH + 800) - 400,
+                    y: Math.random() * V_HEIGHT,
+                    size: 20 + Math.random() * 100,
+                    parallax: 0.1 + Math.random() * 0.2
+                });
+            }
+            for (let i = 0; i < 50; i++) {
+                backgroundStars.push({
+                    x: Math.random() * (V_WIDTH + 800) - 400,
+                    y: Math.random() * V_HEIGHT,
+                    size: Math.random() * 2 + 1,
+                    opacity: Math.random(),
+                    blinkSpeed: 0.01 + Math.random() * 0.03
+                });
+            }
+
+            updateLevelGrid();
+
+            // CHECK TUTORIAL STATUS
+            if (!localStorage.getItem('natureDrift_intro_prompted')) {
+                document.getElementById('introPromptPanel').style.display = 'flex';
+            } else {
+                document.getElementById('introPromptPanel').style.display = 'none';
+            }
+            showScreen('home');
             requestAnimationFrame(gameLoop);
-        }
 
-        updateMainMenuButtons();
-    }
-
-    function startTutorial() {
-        gameMode = 'tutorial';
-        tutorialPhase = 1;
-        resetGame();
-        gameActive = true;
-        isPaused = true; // Pause briefly to show the instruction
-        showScreen('game');
-        tutorialOverlay.style.display = 'flex';
-        updateTutorialUI();
-        requestAnimationFrame(gameLoop);
-    }
-
-    function updateTutorialUI() {
-        tutorialVisual.innerHTML = '';
-        
-        // Reset Default Styles
-        tutorialOverlay.style.background = 'rgba(0,0,0,0)'; 
-        shieldHud.style.zIndex = '200';
-        btnShield.style.zIndex = '150';
-
-        if (tutorialPhase === 1) {
-            tutorialText.innerText = "Danger⚠️,  Do not touch the Red Line.";
-            // Visual dimming handled in Canvas Draw Loop for Phase 1 to correctly isolate the Red Line
-            
-            const tapText = document.createElement('div');
-            tapText.style.position = "absolute";
-            tapText.style.bottom = "20%";
-            tapText.innerHTML = '<div style="color: #fff; font-weight: 800; font-size: 14px; text-transform: uppercase; animation: pulse 1s infinite; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Tap to Start</div>';
-            tutorialVisual.appendChild(tapText);
-
-        } else if (tutorialPhase === 2) {
-            tutorialText.innerText = "To Flip The Gravity: Press Space or (Swipe up and down/Tap to Left of Red Line)";
-            // No Arrow
-
-        } else if (tutorialPhase === 3) {
-            tutorialText.innerText = "To Jump: Press Up Arrow or (Tap Right to the Red Line)";
-            // No Arrow
-
-        } else if (tutorialPhase === 4) {
-            tutorialText.innerText = "Speed Mode: Press Shift or (Double Click to Right of Red Line)";
-            // No Arrow
-
-        } else if (tutorialPhase === 5) {
-            tutorialText.innerText = "Shield Ready! Press Enter or (Tap Shield Icon to Activate)";
-            // Focus on Shield Button/HUD
-            tutorialOverlay.style.background = 'rgba(15, 23, 42, 0.9)'; // Keep existing Phase 5 spotlight
-            btnShield.style.zIndex = '200';
-            shieldHud.style.zIndex = '200';
-            // No Arrow
-
-        } else if (tutorialPhase === 6) {
-            tutorialText.innerText = "You are ready to survive. Let's Play";
-            tutorialVisual.innerHTML = "";
-            setTimeout(() => {
-                localStorage.setItem('natureDrift_tutorial_complete', 'true');
-                gameActive = false;
-                tutorialOverlay.style.display = 'none';
-                showScreen('home');
-                resetMenuBackground();
-            }, 3000);
-        }
-    }
-
-    function showScreen(screenId) {
-        Object.values(screens).forEach(s => s.classList.remove('active'));
-        hud.style.display = 'none';
-        missionHud.style.display = 'none';
-        challengePanel.style.display = 'none';
-        btnPause.style.display = 'none';
-        btnShield.style.display = 'none';
-        shieldHud.style.display = 'none';
-        
-        document.getElementById('star-rating-panel').style.display = 'none';
-        document.querySelectorAll('.star-item').forEach(s => s.classList.remove('earned'));
-
-        if (screenId !== 'game' && screenId !== 'pause') {
-            currentScrollSpeed = BASE_SCROLL_SPEED;
-            isPaused = false;
-        }
-
-        if (screenId === 'home') {
             updateMainMenuButtons();
         }
 
-        if (screenId === 'game') {
-            hud.style.display = 'flex';
-            
-            if (gameMode === 'tutorial') {
-                btnPause.style.display = 'none';
-                btnShield.style.display = 'flex'; // Enable shield button for tutorial
-                shieldHud.style.display = 'flex'; // Enable shield HUD for tutorial
-                missionHud.style.display = 'none';
-                challengePanel.style.display = 'none';
-                bestScoreHud.style.display = 'none';
-            } else {
-                btnPause.style.display = 'flex';
-                btnShield.style.display = 'flex';
-                shieldHud.style.display = 'flex';
-                
-                if (gameMode === 'level') {
-                    missionHud.style.display = 'flex';
-                    challengePanel.style.display = 'flex';
-                    bestScoreHud.style.display = 'none';
-                    levelDisplay.innerText = `LVL ${currentLevel}`;
-                    goalText.innerText = LEVELS_CONFIG[currentLevel].goal.toString().padStart(4, '0');
-                    updateChallengeUI();
-                } else {
-                    missionHud.style.display = 'none';
-                    challengePanel.style.display = 'none';
-                    bestScoreHud.style.display = 'flex';
-                }
+        function startTutorial() {
+            gameMode = 'tutorial';
+            tutorialPhase = 1;
+            resetGame();
+            gameActive = true;
+            isPaused = true; // Pause briefly to show the instruction
+            showScreen('game');
+            tutorialOverlay.style.display = 'flex';
+            updateTutorialUI();
+        }
+
+        function updateTutorialUI() {
+            tutorialVisual.innerHTML = '';
+
+            // Reset Default Styles
+            tutorialOverlay.style.background = 'rgba(0,0,0,0)';
+            shieldHud.style.zIndex = '200';
+            btnShield.style.zIndex = '150';
+
+            if (tutorialPhase === 1) {
+                tutorialText.innerHTML = "Danger⚠️<br>Do not touch the Red Line.";
+                // Visual dimming handled in Canvas Draw Loop for Phase 1 to correctly isolate the Red Line
+
+                const tapText = document.createElement('div');
+                tapText.style.position = "absolute";
+                tapText.style.bottom = "20%";
+                tapText.innerHTML = '<div style="color: #fff; font-weight: 800; font-size: 14px; text-transform: uppercase; animation: pulse 1s infinite; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Tap to Start</div>';
+                tutorialVisual.appendChild(tapText);
+
+            } else if (tutorialPhase === 2) {
+                tutorialText.innerHTML = "<span style='color: #4ade80;'>To Flip Gravity:</span><br>Desktop: Press Space<br>Mouse: Left Button<br>Mobile: Tap left of Red Line";
+                // No Arrow
+
+            } else if (tutorialPhase === 3) {
+                tutorialText.innerHTML = "<span style='color: #4ade80;'>To Jump:</span><br>Desktop: Press Up Arrow<br>Mouse: Right Button<br>Mobile: Tap right of Red Line";
+                // No Arrow
+
+            } else if (tutorialPhase === 4) {
+                tutorialText.innerHTML = "<span style='color: #4ade80;'>To Dash:</span><br>Desktop: Press Shift<br>Mouse: Middle Click<br>Mobile: Double tap right of Red Line";
+                // No Arrow
+
+            } else if (tutorialPhase === 5) {
+                tutorialText.innerHTML = "<span style='color: #4ade80;'>To activate Shield:</span><br>Desktop: Press Enter<br>Mouse: Double Middle Click<br>Mobile: Tap Shield Icon";
+                // Focus on Shield Button/HUD
+                tutorialOverlay.style.background = 'rgba(15, 23, 42, 0.9)'; // Keep existing Phase 5 spotlight
+                btnShield.style.zIndex = '200';
+                shieldHud.style.zIndex = '200';
+                // No Arrow
+
+            } else if (tutorialPhase === 6) {
+                tutorialText.innerText = "You are ready to survive. Let's Play";
+                tutorialVisual.innerHTML = "";
+                setTimeout(() => {
+                    localStorage.setItem('natureDrift_tutorial_complete', 'true');
+                    gameActive = false;
+                    tutorialOverlay.style.display = 'none';
+                    showScreen('home');
+                    resetMenuBackground();
+                }, 3000);
             }
-            
-            // Note: startTutorial sets isPaused to true initially, so we don't force false here if tutorial
-            if (gameMode !== 'tutorial') {
+        }
+
+        function showScreen(screenId) {
+            Object.values(screens).forEach(s => s.classList.remove('active'));
+            hud.style.display = 'none';
+            missionHud.style.display = 'none';
+            challengePanel.style.display = 'none';
+            btnPause.style.display = 'none';
+            btnShield.style.display = 'none';
+            shieldHud.style.display = 'none';
+
+            document.getElementById('star-rating-panel').style.display = 'none';
+            document.querySelectorAll('.star-item').forEach(s => s.classList.remove('earned'));
+
+            if (screenId !== 'game' && screenId !== 'pause') {
+                currentScrollSpeed = BASE_SCROLL_SPEED;
                 isPaused = false;
             }
+
+            if (screenId === 'home') {
+                updateMainMenuButtons();
+            }
+
+            if (screenId === 'game') {
+                hud.style.display = 'flex';
+
+                if (gameMode === 'tutorial') {
+                    btnPause.style.display = 'none';
+                    btnShield.style.display = 'flex'; // Enable shield button for tutorial
+                    shieldHud.style.display = 'flex'; // Enable shield HUD for tutorial
+                    missionHud.style.display = 'none';
+                    challengePanel.style.display = 'none';
+                    bestScoreHud.style.display = 'none';
+                } else {
+                    btnPause.style.display = 'flex';
+                    btnShield.style.display = 'flex';
+                    shieldHud.style.display = 'flex';
+
+                    if (gameMode === 'level') {
+                        missionHud.style.display = 'flex';
+                        challengePanel.style.display = 'flex';
+                        bestScoreHud.style.display = 'none';
+                        levelDisplay.innerText = `LVL ${currentLevel}`;
+                        goalText.innerText = LEVELS_CONFIG[currentLevel].goal.toString().padStart(4, '0');
+                        updateChallengeUI();
+                    } else {
+                        missionHud.style.display = 'none';
+                        challengePanel.style.display = 'none';
+                        bestScoreHud.style.display = 'flex';
+                    }
+                }
+
+                // Note: startTutorial sets isPaused to true initially, so we don't force false here if tutorial
+                if (gameMode !== 'tutorial') {
+                    isPaused = false;
+                }
+                updatePauseIcons();
+            } else if (screenId === 'pause') {
+                screens.pause.classList.add('active');
+                hud.style.display = 'flex';
+                shieldHud.style.display = 'flex';
+
+                if (gameMode === 'unlimited') {
+                    document.getElementById('pauseStats').style.display = 'block';
+                    document.getElementById('pauseCurrentScore').innerText = score;
+                    document.getElementById('pauseBestScore').innerText = bestScore;
+                } else {
+                    document.getElementById('pauseStats').style.display = 'none';
+                    challengePanel.style.display = 'flex';
+                }
+            } else if (screenId === 'levels') {
+                updateLevelGrid();
+                screens[screenId].classList.add('active');
+            } else {
+                screens[screenId].classList.add('active');
+            }
+        }
+
+        function togglePause(e) {
+            if (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            if (!gameActive || gameMode === 'tutorial') return;
+            isPaused = !isPaused;
             updatePauseIcons();
-        } else if (screenId === 'pause') {
-            screens.pause.classList.add('active');
-            hud.style.display = 'flex';
-            shieldHud.style.display = 'flex';
 
-            if(gameMode === 'unlimited') {
-                document.getElementById('pauseStats').style.display = 'block';
-                document.getElementById('pauseCurrentScore').innerText = score;
-                document.getElementById('pauseBestScore').innerText = bestScore;
+            if (isPaused) {
+                accumulatedTime += (Date.now() - levelStartTime);
+                showScreen('pause');
             } else {
-                document.getElementById('pauseStats').style.display = 'none';
-                challengePanel.style.display = 'flex';
+                levelStartTime = Date.now();
+                showScreen('game');
             }
-        } else if (screenId === 'levels') {
-            updateLevelGrid();
-            screens[screenId].classList.add('active');
-        } else {
-            screens[screenId].classList.add('active');
         }
-    }
 
-    function togglePause(e) {
-        if (e) {
-            e.preventDefault();
-            e.stopPropagation();
+        function updatePauseIcons() {
+            if (isPaused) {
+                pauseIcon.style.display = 'none';
+                playIcon.style.display = 'block';
+            } else {
+                pauseIcon.style.display = 'block';
+                playIcon.style.display = 'none';
+            }
         }
-        if (!gameActive || gameMode === 'tutorial') return;
-        isPaused = !isPaused;
-        updatePauseIcons();
-        
-        if (isPaused) {
-            accumulatedTime += (Date.now() - levelStartTime);
-            showScreen('pause');
-        } else {
+
+        function resetGame() {
+            if (gameMode === 'level') {
+                currentSeed = currentLevel * 1000;
+            } else {
+                currentSeed = Math.floor(Math.random() * 100000);
+            }
+
+            score = 0;
+            gravityDir = 1;
+            canFlipMidAir = true;
+            isDashing = false;
+            frameCount = 0;
+            isPaused = false;
+            lastTime = 0;
+
+            gravityFlips = 0;
             levelStartTime = Date.now();
-            showScreen('game');
-        }
-    }
+            accumulatedTime = 0;
 
-    function updatePauseIcons() {
-        if (isPaused) {
-            pauseIcon.style.display = 'none';
-            playIcon.style.display = 'block';
-        } else {
-            pauseIcon.style.display = 'block';
-            playIcon.style.display = 'none';
-        }
-    }
-
-    function resetGame() {
-        if (gameMode === 'level') {
-            currentSeed = currentLevel * 1000;
-        } else {
-            currentSeed = Math.floor(Math.random() * 100000);
-        }
-
-        score = 0;
-        gravityDir = 1;
-        canFlipMidAir = true; 
-        isDashing = false;
-        frameCount = 0;
-        isPaused = false;
-        lastTime = 0;
-        
-        gravityFlips = 0;
-        levelStartTime = Date.now();
-        accumulatedTime = 0;
-
-        let modeBaseSpeed = BASE_SCROLL_SPEED;
-        if (gameMode === 'level') {
-            modeBaseSpeed += LEVELS_CONFIG[currentLevel].speedBoost;
-        } else if (gameMode === 'tutorial') {
-            modeBaseSpeed = 4.0; // Slower for tutorial
-        }
-        currentScrollSpeed = modeBaseSpeed;
-
-        ball = { x: IDEAL_X, y: V_HEIGHT/2, vy: 0, vx: 0, scaleX: 1, scaleY: 1 };
-        segments = [];
-        spikes = [];
-        wasps = [];
-        pulses = []; 
-        trail = [];
-        bursts = [];
-        
-        shieldMeter = 0;
-        isShieldActive = false;
-        lastProcessedScore = 0;
-        updateShieldUI();
-
-        currentTop = V_HEIGHT * 0.25;
-        currentBottom = V_HEIGHT * 0.75;
-        stepTop = 20;
-        stepBottom = 20;
-        flatTopCounter = 20;
-        flatBottomCounter = 20;
-        metersSinceShift = 0;
-        lastWaspX = 0;
-        lastPulseX = 0; 
-        consecutiveSpikesCount = 0;
-
-        gameWrapper.classList.remove('shaking');
-        gameWrapper.style.transform = `rotateX(1.5deg)`; 
-        
-        for (let i = -10; i < Math.ceil(V_WIDTH / SEGMENT_WIDTH) + 10; i++) {
-            addSegment(i * SEGMENT_WIDTH, i < 15);
-        }
-        
-        bestScoreText.innerText = bestScore.toString().padStart(4, '0');
-        if (gameMode === 'level') updateChallengeUI();
-    }
-
-    function addSegment(xPos, isInitial = false) {
-        // --- TUTORIAL OVERRIDE: FLAT GROUND ONLY ---
-        if (gameMode === 'tutorial') {
-            segments.push({ x: xPos, top: V_HEIGHT * 0.25, bottom: V_HEIGHT * 0.75, spike: null });
-            return;
-        }
-
-        let changedTop = false;
-        let changedBottom = false;
-
-        let activeMinGap = MIN_GAP;
-        if (gameMode === 'level') {
-            activeMinGap = LEVELS_CONFIG[currentLevel].gap;
-        }
-
-        if (stepTop <= 0) {
-            if (isInitial) {
-                stepTop = 20;
-                flatTopCounter = 20;
-            } else {
-                let dir = seededRandom() > 0.5 ? 1 : -1;
-                let shift = MIN_VERTICAL_STEP + seededRandom() * 80;
-                let targetTop = currentTop + (shift * dir);
-                if (targetTop < MIN_WALL_MARGIN) targetTop = MIN_WALL_MARGIN;
-                if (targetTop > currentBottom - activeMinGap) targetTop = currentBottom - activeMinGap;
-                currentTop = targetTop;
-                stepTop = Math.floor(seededRandom() * 8) + 4;
-                flatTopCounter = 0;
-                changedTop = true;
+            let modeBaseSpeed = BASE_SCROLL_SPEED;
+            if (gameMode === 'level') {
+                modeBaseSpeed += LEVELS_CONFIG[currentLevel].speedBoost;
+            } else if (gameMode === 'tutorial') {
+                modeBaseSpeed = 4.0; // Slower for tutorial
             }
-        }
+            currentScrollSpeed = modeBaseSpeed;
 
-        if (stepBottom <= 0) {
-            if (isInitial) {
-                stepBottom = 20;
-                flatBottomCounter = 20;
-            } else {
-                let dir = seededRandom() > 0.5 ? 1 : -1;
-                let shift = MIN_VERTICAL_STEP + seededRandom() * 80;
-                let targetBottom = currentBottom + (shift * dir);
-                if (targetBottom > V_HEIGHT - MIN_WALL_MARGIN) targetBottom = V_HEIGHT - MIN_WALL_MARGIN;
-                if (targetBottom < currentTop + activeMinGap) targetBottom = currentTop + activeMinGap;
-                if (targetBottom - currentTop > MAX_GAP) targetBottom = currentTop + MAX_GAP;
-                currentBottom = targetBottom;
-                stepBottom = Math.floor(seededRandom() * 8) + 4;
-                flatBottomCounter = 0;
-                changedBottom = true;
-            }
-        }
+            ball = { x: IDEAL_X, y: V_HEIGHT / 2, vy: 0, vx: 0, scaleX: 1, scaleY: 1 };
+            segments = [];
+            spikes = [];
+            wasps = [];
+            pulses = [];
+            trail = [];
+            bursts = [];
 
-        if(!changedTop) flatTopCounter++;
-        if(!changedBottom) flatBottomCounter++;
-        
-        if (changedTop || changedBottom) {
+            shieldMeter = 0;
+            isShieldActive = false;
+            lastProcessedScore = 0;
+            updateShieldUI();
+
+            currentTop = V_HEIGHT * 0.25;
+            currentBottom = V_HEIGHT * 0.75;
+            stepTop = 20;
+            stepBottom = 20;
+            flatTopCounter = 20;
+            flatBottomCounter = 20;
             metersSinceShift = 0;
-        } else {
-            metersSinceShift += 8; 
+            lastWaspX = 0;
+            lastPulseX = 0;
+            consecutiveSpikesCount = 0;
+
+            gameWrapper.classList.remove('shaking');
+            gameWrapper.style.transform = `rotateX(1.5deg)`;
+
+            for (let i = -10; i < Math.ceil(V_WIDTH / SEGMENT_WIDTH) + 10; i++) {
+                addSegment(i * SEGMENT_WIDTH, i < 15);
+            }
+
+            bestScoreText.innerText = bestScore.toString().padStart(4, '0');
+            if (gameMode === 'level') updateChallengeUI();
         }
 
-        let currentSpike = null;
-        let enemySpawned = false;
+        function addSegment(xPos, isInitial = false) {
+            // --- TUTORIAL OVERRIDE: FLAT GROUND ONLY ---
+            if (gameMode === 'tutorial') {
+                segments.push({ x: xPos, top: V_HEIGHT * 0.25, bottom: V_HEIGHT * 0.75, spike: null });
+                return;
+            }
 
-        let enemyChanceMod = (gameMode === 'level') ? LEVELS_CONFIG[currentLevel].enemyChance : 1.0;
-        
-        if (!isInitial && score > 10) {
-            let canSpawnAnotherSpike = consecutiveSpikesCount < 2;
-            let spikeChance = ((metersSinceShift >= 8) ? 0.45 : 0.15) * enemyChanceMod;
-            if (seededRandom() < spikeChance && canSpawnAnotherSpike) {
-                let side = seededRandom() > 0.5 ? 'top' : 'bottom';
-                let canSpawnTop = flatTopCounter > 4;
-                let canSpawnBottom = flatBottomCounter > 4;
-                if (side === 'top' && canSpawnTop) {
-                    currentSpike = { x: xPos, y: currentTop, type: 'top' };
-                    spikes.push(currentSpike);
-                    enemySpawned = true;
-                    consecutiveSpikesCount++;
-                } else if (side === 'bottom' && canSpawnBottom) {
-                    currentSpike = { x: xPos, y: currentBottom, type: 'bottom' };
-                    spikes.push(currentSpike);
-                    enemySpawned = true;
-                    consecutiveSpikesCount++;
+            let changedTop = false;
+            let changedBottom = false;
+
+            let activeMinGap = MIN_GAP;
+            if (gameMode === 'level') {
+                activeMinGap = LEVELS_CONFIG[currentLevel].gap;
+            }
+
+            if (stepTop <= 0) {
+                if (isInitial) {
+                    stepTop = 20;
+                    flatTopCounter = 20;
+                } else {
+                    let dir = seededRandom() > 0.5 ? 1 : -1;
+                    let shift = MIN_VERTICAL_STEP + seededRandom() * 80;
+                    let targetTop = currentTop + (shift * dir);
+                    if (targetTop < MIN_WALL_MARGIN) targetTop = MIN_WALL_MARGIN;
+                    if (targetTop > currentBottom - activeMinGap) targetTop = currentBottom - activeMinGap;
+                    currentTop = targetTop;
+                    stepTop = Math.floor(seededRandom() * 8) + 4;
+                    flatTopCounter = 0;
+                    changedTop = true;
+                }
+            }
+
+            if (stepBottom <= 0) {
+                if (isInitial) {
+                    stepBottom = 20;
+                    flatBottomCounter = 20;
+                } else {
+                    let dir = seededRandom() > 0.5 ? 1 : -1;
+                    let shift = MIN_VERTICAL_STEP + seededRandom() * 80;
+                    let targetBottom = currentBottom + (shift * dir);
+                    if (targetBottom > V_HEIGHT - MIN_WALL_MARGIN) targetBottom = V_HEIGHT - MIN_WALL_MARGIN;
+                    if (targetBottom < currentTop + activeMinGap) targetBottom = currentTop + activeMinGap;
+                    if (targetBottom - currentTop > MAX_GAP) targetBottom = currentTop + MAX_GAP;
+                    currentBottom = targetBottom;
+                    stepBottom = Math.floor(seededRandom() * 8) + 4;
+                    flatBottomCounter = 0;
+                    changedBottom = true;
+                }
+            }
+
+            if (!changedTop) flatTopCounter++;
+            if (!changedBottom) flatBottomCounter++;
+
+            if (changedTop || changedBottom) {
+                metersSinceShift = 0;
+            } else {
+                metersSinceShift += 8;
+            }
+
+            let currentSpike = null;
+            let enemySpawned = false;
+
+            let enemyChanceMod = (gameMode === 'level') ? LEVELS_CONFIG[currentLevel].enemyChance : 1.0;
+
+            if (!isInitial && score > 10) {
+                let canSpawnAnotherSpike = consecutiveSpikesCount < 2;
+                let spikeChance = ((metersSinceShift >= 8) ? 0.45 : 0.15) * enemyChanceMod;
+                if (seededRandom() < spikeChance && canSpawnAnotherSpike) {
+                    let side = seededRandom() > 0.5 ? 'top' : 'bottom';
+                    let canSpawnTop = flatTopCounter > 4;
+                    let canSpawnBottom = flatBottomCounter > 4;
+                    if (side === 'top' && canSpawnTop) {
+                        currentSpike = { x: xPos, y: currentTop, type: 'top' };
+                        spikes.push(currentSpike);
+                        enemySpawned = true;
+                        consecutiveSpikesCount++;
+                    } else if (side === 'bottom' && canSpawnBottom) {
+                        currentSpike = { x: xPos, y: currentBottom, type: 'bottom' };
+                        spikes.push(currentSpike);
+                        enemySpawned = true;
+                        consecutiveSpikesCount++;
+                    }
+                } else {
+                    consecutiveSpikesCount = 0;
                 }
             } else {
                 consecutiveSpikesCount = 0;
             }
-        } else {
-            consecutiveSpikesCount = 0;
-        }
 
-        segments.push({ x: xPos, top: currentTop, bottom: currentBottom, spike: currentSpike });
-        
-        if (!isInitial && score > 300 && !enemySpawned) {
-            let waspChance = ((metersSinceShift >= 8) ? 0.65 : 0.22) * enemyChanceMod;
-            if (seededRandom() < waspChance && (xPos - lastWaspX > SEGMENT_WIDTH * 7)) {
-                let hasNearbySpike = false;
-                for (let j = Math.max(0, segments.length - 6); j < segments.length; j++) {
-                    if (segments[j].spike) hasNearbySpike = true;
-                }
-                if (!hasNearbySpike) {
-                    wasps.push({
-                        x: xPos,
-                        y: currentTop + (currentBottom - currentTop) / 2,
-                        dir: seededRandom() > 0.5 ? 1 : -1,
-                        topLimit: currentTop,
-                        bottomLimit: currentBottom
-                    });
-                    lastWaspX = xPos;
-                    enemySpawned = true;
-                    metersSinceShift = 0;
+            segments.push({ x: xPos, top: currentTop, bottom: currentBottom, spike: currentSpike });
+
+            if (!isInitial && score > 300 && !enemySpawned) {
+                let waspChance = ((metersSinceShift >= 8) ? 0.65 : 0.22) * enemyChanceMod;
+                if (seededRandom() < waspChance && (xPos - lastWaspX > SEGMENT_WIDTH * 7)) {
+                    let hasNearbySpike = false;
+                    for (let j = Math.max(0, segments.length - 6); j < segments.length; j++) {
+                        if (segments[j].spike) hasNearbySpike = true;
+                    }
+                    if (!hasNearbySpike) {
+                        wasps.push({
+                            x: xPos,
+                            y: currentTop + (currentBottom - currentTop) / 2,
+                            dir: seededRandom() > 0.5 ? 1 : -1,
+                            topLimit: currentTop,
+                            bottomLimit: currentBottom
+                        });
+                        lastWaspX = xPos;
+                        enemySpawned = true;
+                        metersSinceShift = 0;
+                    }
                 }
             }
-        }
 
-        if (!isInitial && score >= 500 && !enemySpawned) {
-            if (xPos - lastPulseX > SEGMENT_WIDTH * 6) {
-                let interval = Math.floor(score / 100); 
-                let spawnCountInInterval = Math.max(1, interval - 4); 
-                let spawnChance = (spawnCountInInterval / 12) * enemyChanceMod; 
+            if (!isInitial && score >= 500 && !enemySpawned) {
+                if (xPos - lastPulseX > SEGMENT_WIDTH * 6) {
+                    let interval = Math.floor(score / 100);
+                    let spawnCountInInterval = Math.max(1, interval - 4);
+                    let spawnChance = (spawnCountInInterval / 12) * enemyChanceMod;
 
-                if (seededRandom() < spawnChance) {
-                    let onTop = seededRandom() > 0.5;
-                    pulses.push({
-                        x: xPos + 100, 
-                        y: onTop ? currentTop : currentBottom,
-                        onTop: onTop,
-                        active: true
-                    });
-                    lastPulseX = xPos;
+                    if (seededRandom() < spawnChance) {
+                        let onTop = seededRandom() > 0.5;
+                        pulses.push({
+                            x: xPos + 100,
+                            y: onTop ? currentTop : currentBottom,
+                            onTop: onTop,
+                            active: true
+                        });
+                        lastPulseX = xPos;
+                    }
                 }
             }
+
+            stepTop--;
+            stepBottom--;
         }
 
-        stepTop--;
-        stepBottom--;
-    }
-
-    function createBurst(x, y, color = '#4ade80') {
-        for (let i = 0; i < 12; i++) {
-            bursts.push({
-                x: x,
-                y: y,
-                vx: (Math.random() - 0.5) * 10,
-                vy: (Math.random() - 0.5) * 10,
-                life: 1.0,
-                size: Math.random() * 4 + 2,
-                color: color
-            });
-        }
-    }
-
-    function getOnWall() {
-        let currentSeg = segments.find(s => ball.x + BALL_RADIUS > s.x && ball.x - BALL_RADIUS < s.x + SEGMENT_WIDTH);
-        if (!currentSeg) return false;
-        return (ball.y - BALL_RADIUS <= currentSeg.top + 2 || ball.y + BALL_RADIUS >= currentSeg.bottom - 2);
-    }
-
-    function updateShieldUI() {
-        const percentage = (shieldMeter / SHIELD_MAX_JOURNEY) * 100;
-        shieldLiquid.style.width = `${percentage}%`;
-
-        btnShield.classList.remove('ready', 'active', 'pulse-ready');
-        shieldIconBar.classList.remove('ready-pulse');
-        
-        if (isShieldActive) {
-            shieldLabel.innerText = "SHIELD SYSTEM ACTIVE";
-            shieldLabel.style.color = "#38bdf8";
-            shieldLiquid.style.filter = "hue-rotate(140deg) brightness(1.2)";
-            btnShield.classList.add('active');
-            shieldIconBar.style.fill = "#38bdf8";
-            shieldIconBar.style.filter = "drop-shadow(0 0 8px #38bdf8)";
-        } else if (shieldMeter >= SHIELD_MAX_JOURNEY) {
-            shieldLabel.innerText = "SHIELD READY - PRESS ENTER";
-            shieldLabel.style.color = "#4ade80";
-            shieldLiquid.style.filter = "brightness(1.5) saturate(1.2)";
-            btnShield.classList.add('ready', 'pulse-ready');
-            shieldIconBar.classList.add('ready-pulse');
-            shieldIconBar.style.fill = "#4ade80";
-            shieldIconBar.style.filter = "drop-shadow(0 0 5px #4ade80)";
-        } else {
-            shieldLabel.innerText = "";
-            shieldLiquid.style.filter = "none";
-            shieldIconBar.style.fill = "#4ade80";
-            shieldIconBar.style.filter = "drop-shadow(0 0 5px #4ade80)";
-        }
-    }
-
-    // --- REFINED CHALLENGE LIMITS ---
-    function getChallengeLimits(level) {
-        const goal = LEVELS_CONFIG[level].goal;
-        const timeLimit = Math.ceil(goal / 10) + 15;
-        const flipLimit = Math.ceil(goal / 80) + 5;
-        return { timeLimit, flipLimit };
-    }
-
-    function updateChallengeUI() {
-        if (gameMode !== 'level') return;
-        
-        const limits = getChallengeLimits(currentLevel);
-        const timeLimit = limits.timeLimit;
-        const flipLimit = limits.flipLimit;
-
-        const currentElapsed = accumulatedTime + (isPaused ? 0 : (Date.now() - levelStartTime));
-        const remaining = Math.max(0, timeLimit - (currentElapsed / 1000));
-        
-        const mins = Math.floor(remaining / 60);
-        const secs = Math.floor(remaining % 60);
-        challengeTimer.innerText = `${mins}:${secs.toString().padStart(2, '0')}`;
-        challengeTimer.className = remaining <= 5 ? 'challenge-val fail' : 'challenge-val';
-
-        challengeFlips.innerText = `${gravityFlips} / ${flipLimit}`;
-        challengeFlips.className = gravityFlips > flipLimit ? 'challenge-val fail' : 'challenge-val';
-    }
-
-    function toggleShield(e) {
-        if (e) {
-            e.preventDefault();
-            e.stopPropagation();
-        }
-        if (!gameActive) return; 
-        // Allow shield toggle in tutorial phase 5
-        if (gameMode === 'tutorial') {
-            if (tutorialPhase !== 5) return;
-        } else if (isPaused) {
-            return;
-        }
-
-        if (isShieldActive) {
-            isShieldActive = false;
-            AC.play('shieldOff');
-            updateShieldUI();
-        } else if (shieldMeter >= SHIELD_MAX_JOURNEY) {
-            isShieldActive = true;
-            AC.play('shieldOn');
-            updateShieldUI();
-            
-            // Tutorial Phase Advance
-            if (gameMode === 'tutorial' && tutorialPhase === 5) {
-                tutorialPhase = 6;
-                updateTutorialUI();
-            }
-        }
-    }
-
-    function update(dt) {
-        if (!gameActive || isPaused) {
-            if (!isPaused) {
-                const moveDt = dt || 1;
-                clouds.forEach(c => {
-                    c.x -= c.speed * moveDt;
-                    if (c.x < -c.w - 200) c.x = V_WIDTH + 200;
-                });
-                mountains.forEach((m, i) => {
-                    m.x -= currentScrollSpeed * (0.05 + i * 0.02) * moveDt;
-                    if (m.x < -m.w - 400) m.x = V_WIDTH + 400;
+        function createBurst(x, y, color = '#4ade80') {
+            for (let i = 0; i < 12; i++) {
+                bursts.push({
+                    x: x,
+                    y: y,
+                    vx: (Math.random() - 0.5) * 10,
+                    vy: (Math.random() - 0.5) * 10,
+                    life: 1.0,
+                    size: Math.random() * 4 + 2,
+                    color: color
                 });
             }
-            return;
         }
 
-        let moveDt = dt || 1;
-        let physicsDt = moveDt; // Separate physics time step
-
-        if (isShieldActive) {
-            moveDt *= 2.5; 
-            physicsDt *= 2.5; // Shield keeps high gravity/physics speed for auto-stick
-        } else if (isDashing) {
-            moveDt *= 2.0;
-            // physicsDt remains normal (1.0) to prevent auto-shifting/snapping, forcing manual saves
+        function getOnWall() {
+            let currentSeg = segments.find(s => ball.x + BALL_RADIUS > s.x && ball.x - BALL_RADIUS < s.x + SEGMENT_WIDTH);
+            if (!currentSeg) return false;
+            return (ball.y - BALL_RADIUS <= currentSeg.top + 2 || ball.y + BALL_RADIUS >= currentSeg.bottom - 2);
         }
 
-        frameCount += moveDt;
-        score = Math.floor(frameCount / 10);
-        scoreText.innerText = score.toString().padStart(4, '0');
-        
-        if (gameMode === 'level') {
-            updateChallengeUI();
-            if (score >= LEVELS_CONFIG[currentLevel].goal) {
-                winLevel();
+        function updateShieldUI() {
+            const percentage = (shieldMeter / SHIELD_MAX_JOURNEY) * 100;
+            shieldLiquid.style.width = `${percentage}%`;
+
+            btnShield.classList.remove('ready', 'active', 'pulse-ready');
+            shieldIconBar.classList.remove('ready-pulse');
+
+            if (isShieldActive) {
+                shieldLabel.innerText = "SHIELD SYSTEM ACTIVE";
+                shieldLabel.style.color = "#38bdf8";
+                shieldLiquid.style.filter = "hue-rotate(140deg) brightness(1.2)";
+                btnShield.classList.add('active');
+                shieldIconBar.style.fill = "#38bdf8";
+                shieldIconBar.style.filter = "drop-shadow(0 0 8px #38bdf8)";
+            } else if (shieldMeter >= SHIELD_MAX_JOURNEY) {
+                shieldLabel.innerText = "SHIELD READY - PRESS ENTER";
+                shieldLabel.style.color = "#4ade80";
+                shieldLiquid.style.filter = "brightness(1.5) saturate(1.2)";
+                btnShield.classList.add('ready', 'pulse-ready');
+                shieldIconBar.classList.add('ready-pulse');
+                shieldIconBar.style.fill = "#4ade80";
+                shieldIconBar.style.filter = "drop-shadow(0 0 5px #4ade80)";
+            } else {
+                shieldLabel.innerText = "";
+                shieldLiquid.style.filter = "none";
+                shieldIconBar.style.fill = "#4ade80";
+                shieldIconBar.style.filter = "drop-shadow(0 0 5px #4ade80)";
+            }
+        }
+
+        // --- REFINED CHALLENGE LIMITS ---
+        function getChallengeLimits(level) {
+            const goal = LEVELS_CONFIG[level].goal;
+            const timeLimit = Math.ceil(goal / 10) + 15;
+            const flipLimit = Math.ceil(goal / 80) + 5;
+            return { timeLimit, flipLimit };
+        }
+
+        function updateChallengeUI() {
+            if (gameMode !== 'level') return;
+
+            const limits = getChallengeLimits(currentLevel);
+            const timeLimit = limits.timeLimit;
+            const flipLimit = limits.flipLimit;
+
+            const currentElapsed = accumulatedTime + (isPaused ? 0 : (Date.now() - levelStartTime));
+            const remaining = Math.max(0, timeLimit - (currentElapsed / 1000));
+
+            const mins = Math.floor(remaining / 60);
+            const secs = Math.floor(remaining % 60);
+            challengeTimer.innerText = `${mins}:${secs.toString().padStart(2, '0')}`;
+            challengeTimer.className = remaining <= 5 ? 'challenge-val fail' : 'challenge-val';
+
+            challengeFlips.innerText = `${gravityFlips} / ${flipLimit}`;
+            challengeFlips.className = gravityFlips > flipLimit ? 'challenge-val fail' : 'challenge-val';
+        }
+
+        function toggleShield(e) {
+            if (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            if (!gameActive) return;
+            // Allow shield toggle in tutorial phase 5
+            if (gameMode === 'tutorial') {
+                if (tutorialPhase !== 5) return;
+            } else if (isPaused) {
                 return;
             }
-        }
 
-        // Auto fill shield in tutorial phase 5
-        if (gameMode === 'tutorial' && tutorialPhase === 5) {
-             shieldMeter = SHIELD_MAX_JOURNEY;
-        }
-
-        if (!isShieldActive && shieldMeter < SHIELD_MAX_JOURNEY) {
-            let scoreDiff = score - lastProcessedScore;
-            if (scoreDiff > 0) {
-                let fillFactor = isDashing ? 2.0 : 1.0;
-                shieldMeter += scoreDiff * fillFactor;
-                if (shieldMeter > SHIELD_MAX_JOURNEY) shieldMeter = SHIELD_MAX_JOURNEY;
-            }
-        } else if (isShieldActive) {
-            shieldMeter -= SHIELD_DEPLETE_SPEED * moveDt;
-            if (shieldMeter <= 0) {
-                shieldMeter = 0;
+            if (isShieldActive) {
                 isShieldActive = false;
                 AC.play('shieldOff');
-            }
-        }
-        lastProcessedScore = score;
-        updateShieldUI();
+                updateShieldUI();
+            } else if (shieldMeter >= SHIELD_MAX_JOURNEY) {
+                isShieldActive = true;
+                AC.play('shieldOn');
+                updateShieldUI();
 
-        let baseSpeed = BASE_SCROLL_SPEED;
-        if (gameMode === 'level') {
-            baseSpeed = BASE_SCROLL_SPEED + LEVELS_CONFIG[currentLevel].speedBoost;
-        } else if (gameMode === 'tutorial') {
-            baseSpeed = 4.0;
-        }
-        currentScrollSpeed = baseSpeed + (score / 400);
-
-        bgGridOffset = (bgGridOffset + currentScrollSpeed * moveDt) % 200;
-
-        let gravityForce = BASE_GRAVITY;
-        if (gameMode === 'level') {
-            gravityForce *= LEVELS_CONFIG[currentLevel].gravityScale;
-        }
-
-        // Use physicsDt for ball mechanics to keep control consistent during Dash
-        ball.vy += gravityForce * gravityDir * physicsDt;
-        ball.y += ball.vy * physicsDt;
-        
-        ball.x += ball.vx * physicsDt * 1.55;
-        ball.vx *= 0.98; 
-        
-        if (ball.x < IDEAL_X) ball.x += 2.2 * physicsDt;
-        if (ball.x > IDEAL_X) ball.x -= 2.2 * physicsDt; 
-
-        if (ball.x + BALL_RADIUS > RIGHT_BOUND_X) {
-            ball.x = RIGHT_BOUND_X - BALL_RADIUS;
-            ball.vx = 0;
-        }
-
-        // Calculate stretch but disable it if dashing
-        let stretch = Math.abs(ball.vy) * 0.04;
-        if (isDashing) stretch = 0; // Fix deformation in dash mode
-        
-        ball.scaleY = 1 + stretch;
-        ball.scaleX = ball.scaleX + ((1 / ball.scaleY) - ball.scaleX) * 0.15;
-        if (isDashing) { ball.scaleX = 1; ball.scaleY = 1; }
-
-        trail.push({ x: ball.x, y: ball.y, life: 1.0 });
-        if(trail.length > 25) trail.shift();
-        trail.forEach(t => t.life -= 0.04 * moveDt);
-
-        for (let i = bursts.length - 1; i >= 0; i--) {
-            let p = bursts[i];
-            p.x += p.vx * moveDt;
-            p.y += p.vy * moveDt;
-            p.life -= 0.03 * moveDt;
-            if (p.life <= 0) bursts.splice(i, 1);
-        }
-
-        const segmentMove = currentScrollSpeed * moveDt;
-        for (let i = segments.length - 1; i >= 0; i--) {
-            segments[i].x -= segmentMove;
-            if (segments[i].x < -SEGMENT_WIDTH * 10) {
-                const lastSegX = segments[segments.length - 1].x;
-                segments.splice(i, 1);
-                addSegment(lastSegX + SEGMENT_WIDTH);
-            }
-        }
-
-        for (let i = spikes.length - 1; i >= 0; i--) {
-            spikes[i].x -= segmentMove;
-            if (spikes[i].x < -200) spikes.splice(i, 1);
-        }
-
-        for (let i = wasps.length - 1; i >= 0; i--) {
-            let w = wasps[i];
-            w.x -= segmentMove;
-            w.y += WASP_SPEED * w.dir * moveDt;
-            const safetyBuffer = BALL_RADIUS * 2 * 1.5;
-            if (w.y - WASP_SIZE/2 < w.topLimit + safetyBuffer) {
-                w.y = w.topLimit + safetyBuffer + WASP_SIZE/2;
-                w.dir = 1;
-            } else if (w.y + WASP_SIZE/2 > w.bottomLimit - safetyBuffer) {
-                w.y = w.bottomLimit - safetyBuffer - WASP_SIZE/2;
-                w.dir = -1;
-            }
-            if (w.x < -200) {
-                wasps.splice(i, 1);
-                continue;
-            }
-            if (!isShieldActive) {
-                let dx = Math.abs(ball.x - w.x - SEGMENT_WIDTH/2);
-                let dy = Math.abs(ball.y - w.y);
-                if (dx < (WASP_SIZE/2 + BALL_RADIUS * 0.8) && dy < (WASP_SIZE/2 + BALL_RADIUS * 0.8)) {
-                    endGame('wasp');
+                // Tutorial Phase Advance
+                if (gameMode === 'tutorial' && tutorialPhase === 5) {
+                    tutorialPhase = 6;
+                    updateTutorialUI();
                 }
             }
         }
-        
-        // Ambient Pulse Sound
-        let pulseOnScreen = false;
-        for (let i = pulses.length - 1; i >= 0; i--) {
-            let p = pulses[i];
-            p.x -= (segmentMove + PULSE_SPEED * moveDt);
-            
-            // Check visibility for ambient sound
-            if (p.x > 0 && p.x < V_WIDTH) pulseOnScreen = true;
 
-            let s = segments.find(seg => p.x >= seg.x && p.x < seg.x + SEGMENT_WIDTH);
-            if (s) {
-                p.y = p.onTop ? s.top : s.bottom;
+        function update(dt) {
+            if (!gameActive || isPaused) {
+                if (!isPaused) {
+                    const moveDt = dt || 1;
+                    clouds.forEach(c => {
+                        c.x -= c.speed * moveDt;
+                        if (c.x < -c.w - 200) c.x = V_WIDTH + 200;
+                    });
+                    mountains.forEach((m, i) => {
+                        m.x -= currentScrollSpeed * (0.05 + i * 0.02) * moveDt;
+                        if (m.x < -m.w - 400) m.x = V_WIDTH + 400;
+                    });
+                }
+                return;
             }
-            if (p.x < -200) {
-                pulses.splice(i, 1);
-                continue;
+
+            let moveDt = dt || 1;
+            let physicsDt = moveDt; // Separate physics time step
+
+            if (isShieldActive) {
+                moveDt *= 2.5;
+                physicsDt *= 2.5; // Shield keeps high gravity/physics speed for auto-stick
+            } else if (isDashing) {
+                moveDt *= 2.0;
+                // physicsDt remains normal (1.0) to prevent auto-shifting/snapping, forcing manual saves
             }
-            let dist = Math.hypot(ball.x - p.x, ball.y - p.y);
-            if (dist < BALL_RADIUS + PULSE_HEIGHT) {
+
+            frameCount += moveDt;
+            score = Math.floor(frameCount / 10);
+            scoreText.innerText = score.toString().padStart(4, '0');
+
+            if (gameMode === 'level') {
+                updateChallengeUI();
+                if (score >= LEVELS_CONFIG[currentLevel].goal) {
+                    winLevel();
+                    return;
+                }
+            }
+
+            // Auto fill shield in tutorial phase 5
+            if (gameMode === 'tutorial' && tutorialPhase === 5) {
+                shieldMeter = SHIELD_MAX_JOURNEY;
+            }
+
+            if (!isShieldActive && shieldMeter < SHIELD_MAX_JOURNEY) {
+                let scoreDiff = score - lastProcessedScore;
+                if (scoreDiff > 0) {
+                    let fillFactor = isDashing ? 2.0 : 1.0;
+                    shieldMeter += scoreDiff * fillFactor;
+                    if (shieldMeter > SHIELD_MAX_JOURNEY) shieldMeter = SHIELD_MAX_JOURNEY;
+                }
+            } else if (isShieldActive) {
+                shieldMeter -= SHIELD_DEPLETE_SPEED * moveDt;
+                if (shieldMeter <= 0) {
+                    shieldMeter = 0;
+                    isShieldActive = false;
+                    AC.play('shieldOff');
+                }
+            }
+            lastProcessedScore = score;
+            updateShieldUI();
+
+            let baseSpeed = BASE_SCROLL_SPEED;
+            if (gameMode === 'level') {
+                baseSpeed = BASE_SCROLL_SPEED + LEVELS_CONFIG[currentLevel].speedBoost;
+            } else if (gameMode === 'tutorial') {
+                baseSpeed = 4.0;
+            }
+            currentScrollSpeed = baseSpeed + (score / 400);
+
+            bgGridOffset = (bgGridOffset + currentScrollSpeed * moveDt) % 200;
+
+            let gravityForce = BASE_GRAVITY;
+            if (gameMode === 'level') {
+                gravityForce *= LEVELS_CONFIG[currentLevel].gravityScale;
+            }
+
+            // Use physicsDt for ball mechanics to keep control consistent during Dash
+            ball.vy += gravityForce * gravityDir * physicsDt;
+            ball.y += ball.vy * physicsDt;
+
+            ball.x += ball.vx * physicsDt * 1.55;
+            ball.vx *= 0.98;
+
+            if (ball.x < IDEAL_X) ball.x += 2.2 * physicsDt;
+            if (ball.x > IDEAL_X) ball.x -= 2.2 * physicsDt;
+
+            if (ball.x + BALL_RADIUS > RIGHT_BOUND_X) {
+                ball.x = RIGHT_BOUND_X - BALL_RADIUS;
+                ball.vx = 0;
+            }
+
+            // Calculate stretch but disable it if dashing
+            let stretch = Math.abs(ball.vy) * 0.04;
+            if (isDashing) stretch = 0; // Fix deformation in dash mode
+
+            ball.scaleY = 1 + stretch;
+            ball.scaleX = ball.scaleX + ((1 / ball.scaleY) - ball.scaleX) * 0.15;
+            if (isDashing) { ball.scaleX = 1; ball.scaleY = 1; }
+
+            trail.push({ x: ball.x, y: ball.y, life: 1.0 });
+            if (trail.length > 25) trail.shift();
+            trail.forEach(t => t.life -= 0.04 * moveDt);
+
+            for (let i = bursts.length - 1; i >= 0; i--) {
+                let p = bursts[i];
+                p.x += p.vx * moveDt;
+                p.y += p.vy * moveDt;
+                p.life -= 0.03 * moveDt;
+                if (p.life <= 0) bursts.splice(i, 1);
+            }
+
+            const segmentMove = currentScrollSpeed * moveDt;
+            for (let i = segments.length - 1; i >= 0; i--) {
+                segments[i].x -= segmentMove;
+                if (segments[i].x < -SEGMENT_WIDTH * 10) {
+                    const lastSegX = segments[segments.length - 1].x;
+                    segments.splice(i, 1);
+                    addSegment(lastSegX + SEGMENT_WIDTH);
+                }
+            }
+
+            for (let i = spikes.length - 1; i >= 0; i--) {
+                spikes[i].x -= segmentMove;
+                if (spikes[i].x < -200) spikes.splice(i, 1);
+            }
+
+            for (let i = wasps.length - 1; i >= 0; i--) {
+                let w = wasps[i];
+                w.x -= segmentMove;
+                w.y += WASP_SPEED * w.dir * moveDt;
+                const safetyBuffer = BALL_RADIUS * 2 * 1.5;
+                if (w.y - WASP_SIZE / 2 < w.topLimit + safetyBuffer) {
+                    w.y = w.topLimit + safetyBuffer + WASP_SIZE / 2;
+                    w.dir = 1;
+                } else if (w.y + WASP_SIZE / 2 > w.bottomLimit - safetyBuffer) {
+                    w.y = w.bottomLimit - safetyBuffer - WASP_SIZE / 2;
+                    w.dir = -1;
+                }
+                if (w.x < -200) {
+                    wasps.splice(i, 1);
+                    continue;
+                }
                 if (!isShieldActive) {
-                    AC.play('pulseHit');
-                    if(navigator.vibrate) navigator.vibrate(50);
-                    createBurst(p.x, p.y, PULSE_COLOR);
-                    let pushTarget = DEAD_ZONE_X + (ball.x - DEAD_ZONE_X) / 2;
-                    ball.x = pushTarget;
-                    ball.vx = -12; 
-                    pulses.splice(i, 1);
-                    gameWrapper.classList.add('shaking');
-                    setTimeout(() => gameWrapper.classList.remove('shaking'), 150);
-                } else {
-                    createBurst(p.x, p.y, PULSE_COLOR);
-                    pulses.splice(i, 1);
-                }
-            }
-        }
-        
-        // Play low ambient sound if pulse is visible
-        if (pulseOnScreen && Math.floor(frameCount) % 20 === 0) {
-             AC.play('pulseAmbient');
-        }
-
-        if (!isShieldActive) {
-            for (let s of spikes) {
-                let centerX = s.x + SEGMENT_WIDTH/2;
-                let dist = Math.hypot(ball.x - centerX, ball.y - s.y);
-                if (dist < BALL_RADIUS + 30) {
-                    let dx = Math.abs(ball.x - centerX);
-                    if (dx < 20) {
-                        if (s.type === 'top' && ball.y - BALL_RADIUS < s.y + SPIKE_HEIGHT) endGame('spike');
-                        if (s.type === 'bottom' && ball.y + BALL_RADIUS > s.y - SPIKE_HEIGHT) endGame('spike');
+                    let dx = Math.abs(ball.x - w.x - SEGMENT_WIDTH / 2);
+                    let dy = Math.abs(ball.y - w.y);
+                    if (dx < (WASP_SIZE / 2 + BALL_RADIUS * 0.8) && dy < (WASP_SIZE / 2 + BALL_RADIUS * 0.8)) {
+                        endGame('wasp');
                     }
                 }
             }
-        }
 
-        let currentSeg = segments.find(s => ball.x + BALL_RADIUS > s.x && ball.x - BALL_RADIUS < s.x + SEGMENT_WIDTH);
-        if (currentSeg) {
-            // New logic to prevent auto-shift on steep walls (tunneling fix)
-            let allowedPenetration = Math.max(15, Math.abs(ball.vy * physicsDt) + 12);
-            
-            if (ball.y - BALL_RADIUS < currentSeg.top) {
-                let pen = currentSeg.top - (ball.y - BALL_RADIUS);
-                // If penetration is deep (wall hit), push back instead of snap
-                if (pen > allowedPenetration && !isShieldActive) {
-                    ball.x = currentSeg.x - BALL_RADIUS - 1; // Push out
-                    ball.vx = 0;
-                } else {
-                    // Normal snap
-                    if (Math.abs(ball.vy) > 2 && !isDashing) ball.scaleX = 1.4;
-                    ball.y = currentSeg.top + BALL_RADIUS;
-                    ball.vy = 0;
-                    canFlipMidAir = true;
+            // Ambient Pulse Sound
+            let pulseOnScreen = false;
+            for (let i = pulses.length - 1; i >= 0; i--) {
+                let p = pulses[i];
+                p.x -= (segmentMove + PULSE_SPEED * moveDt);
+
+                // Check visibility for ambient sound
+                if (p.x > 0 && p.x < V_WIDTH) pulseOnScreen = true;
+
+                let s = segments.find(seg => p.x >= seg.x && p.x < seg.x + SEGMENT_WIDTH);
+                if (s) {
+                    p.y = p.onTop ? s.top : s.bottom;
                 }
-            } else if (ball.y + BALL_RADIUS > currentSeg.bottom) {
-                let pen = (ball.y + BALL_RADIUS) - currentSeg.bottom;
-                // If penetration is deep (wall hit), push back instead of snap
-                if (pen > allowedPenetration && !isShieldActive) {
-                    ball.x = currentSeg.x - BALL_RADIUS - 1; // Push out
-                    ball.vx = 0;
-                } else {
-                    // Normal snap
-                    if (Math.abs(ball.vy) > 2 && !isDashing) ball.scaleX = 1.4;
-                    ball.y = currentSeg.bottom - BALL_RADIUS;
-                    ball.vy = 0;
-                    canFlipMidAir = true;
+                if (p.x < -200) {
+                    pulses.splice(i, 1);
+                    continue;
                 }
-            }
-            
-            let nextSeg = segments.find(s => s.x > currentSeg.x && s.x <= ball.x + BALL_RADIUS + 5);
-            if (nextSeg) {
-                if (ball.y < nextSeg.top || ball.y > nextSeg.bottom) {
-                    if (isShieldActive) {
-                        if (ball.y < nextSeg.top) {
-                            ball.y = nextSeg.top + BALL_RADIUS;
-                            ball.vy = 0;
-                        } else if (ball.y > nextSeg.bottom) {
-                            ball.y = nextSeg.bottom - BALL_RADIUS;
-                            ball.vy = 0;
-                        }
+                let dist = Math.hypot(ball.x - p.x, ball.y - p.y);
+                if (dist < BALL_RADIUS + PULSE_HEIGHT) {
+                    if (!isShieldActive) {
+                        AC.play('pulseHit');
+                        if (navigator.vibrate) navigator.vibrate(50);
+                        createBurst(p.x, p.y, PULSE_COLOR);
+                        let pushTarget = DEAD_ZONE_X + (ball.x - DEAD_ZONE_X) / 2;
+                        ball.x = pushTarget;
+                        ball.vx = -12;
+                        pulses.splice(i, 1);
+                        gameWrapper.classList.add('shaking');
+                        setTimeout(() => gameWrapper.classList.remove('shaking'), 150);
                     } else {
-                        if (ball.x + BALL_RADIUS > nextSeg.x) {
-                            ball.x = nextSeg.x - BALL_RADIUS;
+                        createBurst(p.x, p.y, PULSE_COLOR);
+                        pulses.splice(i, 1);
+                    }
+                }
+            }
+
+            // Play low ambient sound if pulse is visible
+            if (pulseOnScreen && Math.floor(frameCount) % 20 === 0) {
+                AC.play('pulseAmbient');
+            }
+
+            if (!isShieldActive) {
+                for (let s of spikes) {
+                    let centerX = s.x + SEGMENT_WIDTH / 2;
+                    let dist = Math.hypot(ball.x - centerX, ball.y - s.y);
+                    if (dist < BALL_RADIUS + 30) {
+                        let dx = Math.abs(ball.x - centerX);
+                        if (dx < 20) {
+                            if (s.type === 'top' && ball.y - BALL_RADIUS < s.y + SPIKE_HEIGHT) endGame('spike');
+                            if (s.type === 'bottom' && ball.y + BALL_RADIUS > s.y - SPIKE_HEIGHT) endGame('spike');
                         }
                     }
                 }
             }
-        }
-        
-        if (ball.x - BALL_RADIUS < DEAD_ZONE_X) endGame('redline');
-    }
 
-    function drawBackground(ctx, speed) {
-        let gradient = ctx.createLinearGradient(0, 0, 0, V_HEIGHT);
-        gradient.addColorStop(0, "#0f172a"); 
-        gradient.addColorStop(1, "#1e293b"); 
-        ctx.fillStyle = gradient;
-        ctx.fillRect(-1000, -1000, V_WIDTH + 2000, V_HEIGHT + 2000);
-        ctx.strokeStyle = "rgba(148, 163, 184, 0.03)";
-        ctx.lineWidth = 1;
-        for(let x = -400 - bgGridOffset; x < V_WIDTH + 400; x += 200) {
-            ctx.beginPath(); ctx.moveTo(x, -500); ctx.lineTo(x, V_HEIGHT + 500); ctx.stroke();
-        }
-        backgroundStars.forEach(star => {
-            if (!isPaused) {
-                star.opacity += star.blinkSpeed;
-                if(star.opacity > 1 || star.opacity < 0.2) star.blinkSpeed *= -1;
-                star.x -= speed * 0.05;
-                if(star.x < -400) star.x = V_WIDTH + 400;
-            }
-            ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
-            ctx.beginPath(); ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2); ctx.fill();
-        });
-        backgroundShapes.forEach(shape => {
-            if (!isPaused) {
-                shape.x -= speed * shape.parallax;
-                if (shape.x < -shape.size - 400) shape.x = V_WIDTH + shape.size + 400;
-            }
-            ctx.fillStyle = "rgba(148, 163, 184, 0.1)";
-            ctx.beginPath(); ctx.arc(shape.x, shape.y, shape.size, 0, Math.PI * 2); ctx.fill();
-            ctx.strokeStyle = "rgba(255, 255, 255, 0.05)";
-            ctx.stroke();
-        });
-    }
+            let currentSeg = segments.find(s => ball.x + BALL_RADIUS > s.x && ball.x - BALL_RADIUS < s.x + SEGMENT_WIDTH);
+            if (currentSeg) {
+                // New logic to prevent auto-shift on steep walls (tunneling fix)
+                let allowedPenetration = Math.max(15, Math.abs(ball.vy * physicsDt) + 12);
 
-    function drawDeadZone(ctx) {
-        const glowIntensity = Math.sin(Date.now() / 200) * 5 + 10;
-        ctx.save();
-        ctx.shadowBlur = glowIntensity; ctx.shadowColor = "#ef4444";
-        ctx.strokeStyle = "#ef4444"; ctx.lineWidth = 3;
-        ctx.beginPath(); ctx.moveTo(DEAD_ZONE_X, -500); ctx.lineTo(DEAD_ZONE_X, V_HEIGHT + 500); ctx.stroke();
-        ctx.globalAlpha = 0.2; ctx.lineWidth = 15; ctx.stroke();
-        ctx.restore();
-    }
+                if (ball.y - BALL_RADIUS < currentSeg.top) {
+                    let pen = currentSeg.top - (ball.y - BALL_RADIUS);
+                    // If penetration is deep (wall hit), push back instead of snap
+                    if (pen > allowedPenetration && !isShieldActive) {
+                        ball.x = currentSeg.x - BALL_RADIUS - 1; // Push out
+                        ball.vx = 0;
+                    } else {
+                        // Normal snap
+                        if (Math.abs(ball.vy) > 2 && !isDashing) ball.scaleX = 1.4;
+                        ball.y = currentSeg.top + BALL_RADIUS;
+                        ball.vy = 0;
+                        canFlipMidAir = true;
+                    }
+                } else if (ball.y + BALL_RADIUS > currentSeg.bottom) {
+                    let pen = (ball.y + BALL_RADIUS) - currentSeg.bottom;
+                    // If penetration is deep (wall hit), push back instead of snap
+                    if (pen > allowedPenetration && !isShieldActive) {
+                        ball.x = currentSeg.x - BALL_RADIUS - 1; // Push out
+                        ball.vx = 0;
+                    } else {
+                        // Normal snap
+                        if (Math.abs(ball.vy) > 2 && !isDashing) ball.scaleX = 1.4;
+                        ball.y = currentSeg.bottom - BALL_RADIUS;
+                        ball.vy = 0;
+                        canFlipMidAir = true;
+                    }
+                }
 
-    function draw() {
-        ctx.save();
-        ctx.setTransform(1, 0, 0, 1, 0, 0);
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.restore();
-
-        if (!gameActive) {
-            const grad = ctx.createLinearGradient(0, 0, 0, V_HEIGHT);
-            grad.addColorStop(0, '#7dd3fc');
-            grad.addColorStop(1, '#f0f9ff');
-            ctx.fillStyle = grad;
-            ctx.fillRect(-1000, -1000, V_WIDTH + 2000, V_HEIGHT + 2000);
-            mountains.forEach(m => {
-                ctx.fillStyle = m.color;
-                ctx.beginPath(); ctx.moveTo(m.x, V_HEIGHT + 100); ctx.lineTo(m.x + m.w/2, V_HEIGHT - m.h); ctx.lineTo(m.x + m.w, V_HEIGHT + 100); ctx.fill();
-            });
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
-            clouds.forEach(c => {
-                ctx.beginPath(); ctx.ellipse(c.x, c.y, c.w/2, c.h/2, 0, 0, Math.PI*2); ctx.fill();
-            });
-            return;
-        }
-
-        drawBackground(ctx, currentScrollSpeed);
-        drawDeadZone(ctx);
-
-        bursts.forEach(p => {
-            ctx.fillStyle = p.color || `rgba(74, 222, 128, ${p.life})`;
-            if(!p.color) ctx.globalAlpha = p.life;
-            ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill();
-            ctx.globalAlpha = 1.0;
-        });
-
-        trail.forEach(t => {
-            const radius = Math.max(0, BALL_RADIUS * t.life);
-            if (radius > 0) {
-                ctx.globalAlpha = t.life * 0.5;
-                ctx.beginPath(); ctx.arc(t.x, t.y, radius, 0, Math.PI*2);
-                ctx.fillStyle = BALL_COLOR; ctx.fill();
-            }
-        });
-        ctx.globalAlpha = 1.0;
-
-        segments.forEach((s, idx) => {
-            ctx.fillStyle = '#020617'; 
-            ctx.fillRect(s.x, -1000, SEGMENT_WIDTH + 1, s.top + 1000);
-            ctx.fillRect(s.x, s.bottom, SEGMENT_WIDTH + 1, 1000);
-            if (idx < segments.length - 1) {
-                let next = segments[idx+1];
-                let topEnd = Math.max(s.top, next.top);
-                ctx.fillRect(next.x - 1, -1000, 2, topEnd + 1000);
-                let botStart = Math.min(s.bottom, next.bottom);
-                ctx.fillRect(next.x - 1, botStart, 2, 1000);
-            }
-        });
-
-        spikes.forEach(s => {
-            ctx.save();
-            ctx.shadowBlur = 15;
-            ctx.shadowColor = "#ef4444";
-            ctx.fillStyle = "#ef4444";
-            ctx.beginPath();
-            let tipY = s.type === 'top' ? s.y + SPIKE_HEIGHT : s.y - SPIKE_HEIGHT;
-            ctx.moveTo(s.x + (SEGMENT_WIDTH - SPIKE_BASE_SIZE)/2, s.y);
-            ctx.lineTo(s.x + SEGMENT_WIDTH - (SEGMENT_WIDTH - SPIKE_BASE_SIZE)/2, s.y);
-            ctx.lineTo(s.x + SEGMENT_WIDTH/2, tipY);
-            ctx.closePath();
-            ctx.fill();
-            ctx.globalAlpha = 0.4;
-            ctx.fillStyle = "white";
-            ctx.beginPath();
-            ctx.moveTo(s.x + SEGMENT_WIDTH/2, s.y);
-            ctx.lineTo(s.x + SEGMENT_WIDTH/2, tipY);
-            ctx.stroke();
-            ctx.restore();
-        });
-
-        wasps.forEach(w => {
-            ctx.save();
-            ctx.shadowBlur = 20;
-            ctx.shadowColor = "#f97316";
-            ctx.fillStyle = "#f97316";
-            ctx.translate(w.x + SEGMENT_WIDTH/2, w.y);
-            ctx.rotate(frameCount * 0.1); 
-            ctx.fillRect(-WASP_SIZE/2, -WASP_SIZE/2, WASP_SIZE, WASP_SIZE);
-            ctx.strokeStyle = "white";
-            ctx.lineWidth = 2;
-            ctx.strokeRect(-WASP_SIZE/2, -WASP_SIZE/2, WASP_SIZE, WASP_SIZE);
-            ctx.restore();
-        });
-
-        pulses.forEach(p => {
-            ctx.save();
-            ctx.shadowBlur = 25;
-            ctx.shadowColor = PULSE_COLOR;
-            ctx.fillStyle = PULSE_COLOR;
-            ctx.beginPath();
-            let vertX = p.x - PULSE_WIDTH;
-            let baseY1 = p.y - PULSE_HEIGHT/2;
-            let baseY2 = p.y + PULSE_HEIGHT/2;
-            ctx.moveTo(vertX, p.y);
-            ctx.lineTo(p.x, baseY1);
-            ctx.lineTo(p.x, baseY2);
-            ctx.closePath();
-            ctx.fill();
-            ctx.fillStyle = "white";
-            ctx.globalAlpha = 0.6;
-            ctx.beginPath();
-            ctx.moveTo(vertX + 15, p.y);
-            ctx.lineTo(p.x, p.y - 10);
-            ctx.lineTo(p.x, p.y + 10);
-            ctx.closePath();
-            ctx.fill();
-            ctx.restore();
-        });
-
-        ctx.fillStyle = '#38bdf8'; 
-        segments.forEach((s, idx) => {
-            ctx.fillRect(s.x, s.top - 4, SEGMENT_WIDTH + 1, 4);
-            ctx.fillRect(s.x, s.bottom, SEGMENT_WIDTH + 1, 4);
-            if (idx < segments.length - 1) {
-                let next = segments[idx+1];
-                if (Math.abs(s.top - next.top) > 1) ctx.fillRect(next.x - 1, Math.min(s.top, next.top), 2, Math.abs(s.top - next.top));
-                if (Math.abs(s.bottom - next.bottom) > 1) ctx.fillRect(next.x - 1, Math.min(s.bottom, next.bottom), 2, Math.abs(s.bottom - next.bottom));
-            }
-        });
-
-        ctx.save();
-        ctx.translate(ball.x, ball.y);
-        ctx.scale(ball.scaleX, ball.scaleY);
-
-        if (isShieldActive) {
-            ctx.save();
-            const pulse = Math.sin(frameCount * 0.2) * 5;
-            ctx.shadowBlur = 25 + pulse;
-            ctx.shadowColor = "#38bdf8";
-            ctx.strokeStyle = "rgba(56, 189, 248, 0.8)";
-            ctx.lineWidth = 6;
-            ctx.lineCap = 'round';
-            ctx.beginPath();
-            ctx.arc(0, 0, BALL_RADIUS + 15, -Math.PI/2.5, Math.PI/2.5);
-            ctx.stroke();
-            ctx.strokeStyle = "rgba(255, 255, 255, 0.6)";
-            ctx.lineWidth = 2;
-            ctx.beginPath();
-            ctx.arc(0, 0, BALL_RADIUS + 12, -Math.PI/3, Math.PI/3);
-            ctx.stroke();
-            for(let i=0; i<3; i++) {
-                let angle = (frameCount * 0.1 + (i * Math.PI*2/3)) % (Math.PI*2);
-                if (angle > -Math.PI/2 && angle < Math.PI/2) {
-                    ctx.fillStyle = "#fff";
-                    ctx.beginPath();
-                    ctx.arc((BALL_RADIUS + 20) * Math.cos(angle), (BALL_RADIUS + 20) * Math.sin(angle), 2, 0, Math.PI*2);
-                    ctx.fill();
+                let nextSeg = segments.find(s => s.x > currentSeg.x && s.x <= ball.x + BALL_RADIUS + 5);
+                if (nextSeg) {
+                    if (ball.y < nextSeg.top || ball.y > nextSeg.bottom) {
+                        if (isShieldActive) {
+                            if (ball.y < nextSeg.top) {
+                                ball.y = nextSeg.top + BALL_RADIUS;
+                                ball.vy = 0;
+                            } else if (ball.y > nextSeg.bottom) {
+                                ball.y = nextSeg.bottom - BALL_RADIUS;
+                                ball.vy = 0;
+                            }
+                        } else {
+                            if (ball.x + BALL_RADIUS > nextSeg.x) {
+                                ball.x = nextSeg.x - BALL_RADIUS;
+                            }
+                        }
+                    }
                 }
             }
+
+            if (ball.x - BALL_RADIUS < DEAD_ZONE_X) endGame('redline');
+        }
+
+        function drawBackground(ctx, speed) {
+            let gradient = ctx.createLinearGradient(0, 0, 0, V_HEIGHT);
+            gradient.addColorStop(0, "#0f172a");
+            gradient.addColorStop(1, "#1e293b");
+            ctx.fillStyle = gradient;
+            ctx.fillRect(-1000, -1000, V_WIDTH + 2000, V_HEIGHT + 2000);
+            ctx.strokeStyle = "rgba(148, 163, 184, 0.03)";
+            ctx.lineWidth = 1;
+            for (let x = -400 - bgGridOffset; x < V_WIDTH + 400; x += 200) {
+                ctx.beginPath(); ctx.moveTo(x, -500); ctx.lineTo(x, V_HEIGHT + 500); ctx.stroke();
+            }
+            backgroundStars.forEach(star => {
+                if (!isPaused) {
+                    star.opacity += star.blinkSpeed;
+                    if (star.opacity > 1 || star.opacity < 0.2) star.blinkSpeed *= -1;
+                    star.x -= speed * 0.05;
+                    if (star.x < -400) star.x = V_WIDTH + 400;
+                }
+                ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
+                ctx.beginPath(); ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2); ctx.fill();
+            });
+            backgroundShapes.forEach(shape => {
+                if (!isPaused) {
+                    shape.x -= speed * shape.parallax;
+                    if (shape.x < -shape.size - 400) shape.x = V_WIDTH + shape.size + 400;
+                }
+                ctx.fillStyle = "rgba(148, 163, 184, 0.1)";
+                ctx.beginPath(); ctx.arc(shape.x, shape.y, shape.size, 0, Math.PI * 2); ctx.fill();
+                ctx.strokeStyle = "rgba(255, 255, 255, 0.05)";
+                ctx.stroke();
+            });
+        }
+
+        function drawDeadZone(ctx) {
+            const glowIntensity = Math.sin(Date.now() / 200) * 5 + 10;
+            ctx.save();
+            ctx.shadowBlur = glowIntensity; ctx.shadowColor = "#ef4444";
+            ctx.strokeStyle = "#ef4444"; ctx.lineWidth = 3;
+            ctx.beginPath(); ctx.moveTo(DEAD_ZONE_X, -500); ctx.lineTo(DEAD_ZONE_X, V_HEIGHT + 500); ctx.stroke();
+            ctx.globalAlpha = 0.2; ctx.lineWidth = 15; ctx.stroke();
             ctx.restore();
         }
 
-        ctx.beginPath(); ctx.arc(0, 0, BALL_RADIUS, 0, Math.PI*2);
-        ctx.fillStyle = BALL_COLOR; ctx.shadowBlur = 20; ctx.shadowColor = BALL_COLOR; ctx.fill();
-        ctx.beginPath(); ctx.arc(0, 0, BALL_RADIUS * 0.6, 0, Math.PI*2);
-        ctx.fillStyle = '#fff'; ctx.globalAlpha = 0.8; ctx.fill();
-        ctx.restore();
+        function draw() {
+            ctx.save();
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.restore();
 
-        if (isPaused && screens.pause.classList.contains('active')) {
-            ctx.fillStyle = 'rgba(0,0,0,0.4)';
-            ctx.fillRect(-1000, -1000, V_WIDTH + 2000, V_HEIGHT + 2000);
-        }
-
-        // --- TUTORIAL PHASE 1 DIMMING OVERLAY ---
-        if (gameMode === 'tutorial' && tutorialPhase === 1) {
-            // Dim the entire screen
-            ctx.fillStyle = 'rgba(15, 23, 42, 0.85)';
-            ctx.fillRect(-1000, -1000, V_WIDTH + 2000, V_HEIGHT + 2000);
-            
-            // Redraw the Red Line (Dead Zone) on top so it appears focused
-            drawDeadZone(ctx);
-        }
-    }
-
-    function gameLoop(now) {
-        if (!lastTime) lastTime = now;
-        const dt = Math.min(2, (now - lastTime) / 16.67);
-        lastTime = now;
-        update(dt);
-        draw();
-        requestAnimationFrame(gameLoop);
-    }
-
-    function endGame(reason = 'crash') {
-        if (!gameActive) return;
-        gameActive = false; isPaused = false;
-        createBurst(ball.x, ball.y);
-        gameWrapper.classList.add('shaking');
-        gameWrapper.style.transform = `rotateX(0deg)`; 
-        
-        AC.play(reason);
-        if(navigator.vibrate) navigator.vibrate([200, 100, 200]);
-
-        showScreen('gameOver');
-
-        document.getElementById('gameOverTitle').innerText = "Journey Ended";
-        document.getElementById('gameOverTitle').style.color = "#ef4444";
-        document.getElementById('finalScore').innerText = `You drifted ${score} meters.`;
-
-        const finalTimeMs = accumulatedTime + (Date.now() - levelStartTime);
-        const timeSec = (finalTimeMs / 1000).toFixed(1);
-        const statsEl = document.getElementById('missionStats');
-        statsEl.style.display = 'block';
-        statsEl.innerText = `Time: ${timeSec}s | Flips: ${gravityFlips}`;
-        
-        if (gameMode === 'unlimited') {
-            if (score > bestScore) {
-                bestScore = score;
+            if (!gameActive) {
+                const grad = ctx.createLinearGradient(0, 0, 0, V_HEIGHT);
+                grad.addColorStop(0, '#7dd3fc');
+                grad.addColorStop(1, '#f0f9ff');
+                ctx.fillStyle = grad;
+                ctx.fillRect(-1000, -1000, V_WIDTH + 2000, V_HEIGHT + 2000);
+                mountains.forEach(m => {
+                    ctx.fillStyle = m.color;
+                    ctx.beginPath(); ctx.moveTo(m.x, V_HEIGHT + 100); ctx.lineTo(m.x + m.w / 2, V_HEIGHT - m.h); ctx.lineTo(m.x + m.w, V_HEIGHT + 100); ctx.fill();
+                });
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+                clouds.forEach(c => {
+                    ctx.beginPath(); ctx.ellipse(c.x, c.y, c.w / 2, c.h / 2, 0, 0, Math.PI * 2); ctx.fill();
+                });
+                return;
             }
-            document.getElementById('bestScoreEnd').style.display = 'block';
-            document.getElementById('bestScoreEnd').innerText = `Best Journey: ${bestScore}m`;
-        } else {
+
+            drawBackground(ctx, currentScrollSpeed);
+            drawDeadZone(ctx);
+
+            bursts.forEach(p => {
+                ctx.fillStyle = p.color || `rgba(74, 222, 128, ${p.life})`;
+                if (!p.color) ctx.globalAlpha = p.life;
+                ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill();
+                ctx.globalAlpha = 1.0;
+            });
+
+            trail.forEach(t => {
+                const radius = Math.max(0, BALL_RADIUS * t.life);
+                if (radius > 0) {
+                    ctx.globalAlpha = t.life * 0.5;
+                    ctx.beginPath(); ctx.arc(t.x, t.y, radius, 0, Math.PI * 2);
+                    ctx.fillStyle = BALL_COLOR; ctx.fill();
+                }
+            });
+            ctx.globalAlpha = 1.0;
+
+            segments.forEach((s, idx) => {
+                ctx.fillStyle = '#020617';
+                ctx.fillRect(s.x, -1000, SEGMENT_WIDTH + 1, s.top + 1000);
+                ctx.fillRect(s.x, s.bottom, SEGMENT_WIDTH + 1, 1000);
+                if (idx < segments.length - 1) {
+                    let next = segments[idx + 1];
+                    let topEnd = Math.max(s.top, next.top);
+                    ctx.fillRect(next.x - 1, -1000, 2, topEnd + 1000);
+                    let botStart = Math.min(s.bottom, next.bottom);
+                    ctx.fillRect(next.x - 1, botStart, 2, 1000);
+                }
+            });
+
+            spikes.forEach(s => {
+                ctx.save();
+                ctx.shadowBlur = 15;
+                ctx.shadowColor = "#ef4444";
+                ctx.fillStyle = "#ef4444";
+                ctx.beginPath();
+                let tipY = s.type === 'top' ? s.y + SPIKE_HEIGHT : s.y - SPIKE_HEIGHT;
+                ctx.moveTo(s.x + (SEGMENT_WIDTH - SPIKE_BASE_SIZE) / 2, s.y);
+                ctx.lineTo(s.x + SEGMENT_WIDTH - (SEGMENT_WIDTH - SPIKE_BASE_SIZE) / 2, s.y);
+                ctx.lineTo(s.x + SEGMENT_WIDTH / 2, tipY);
+                ctx.closePath();
+                ctx.fill();
+                ctx.globalAlpha = 0.4;
+                ctx.fillStyle = "white";
+                ctx.beginPath();
+                ctx.moveTo(s.x + SEGMENT_WIDTH / 2, s.y);
+                ctx.lineTo(s.x + SEGMENT_WIDTH / 2, tipY);
+                ctx.stroke();
+                ctx.restore();
+            });
+
+            wasps.forEach(w => {
+                ctx.save();
+                ctx.shadowBlur = 20;
+                ctx.shadowColor = "#f97316";
+                ctx.fillStyle = "#f97316";
+                ctx.translate(w.x + SEGMENT_WIDTH / 2, w.y);
+                ctx.rotate(frameCount * 0.1);
+                ctx.fillRect(-WASP_SIZE / 2, -WASP_SIZE / 2, WASP_SIZE, WASP_SIZE);
+                ctx.strokeStyle = "white";
+                ctx.lineWidth = 2;
+                ctx.strokeRect(-WASP_SIZE / 2, -WASP_SIZE / 2, WASP_SIZE, WASP_SIZE);
+                ctx.restore();
+            });
+
+            pulses.forEach(p => {
+                ctx.save();
+                ctx.shadowBlur = 25;
+                ctx.shadowColor = PULSE_COLOR;
+                ctx.fillStyle = PULSE_COLOR;
+                ctx.beginPath();
+                let vertX = p.x - PULSE_WIDTH;
+                let baseY1 = p.y - PULSE_HEIGHT / 2;
+                let baseY2 = p.y + PULSE_HEIGHT / 2;
+                ctx.moveTo(vertX, p.y);
+                ctx.lineTo(p.x, baseY1);
+                ctx.lineTo(p.x, baseY2);
+                ctx.closePath();
+                ctx.fill();
+                ctx.fillStyle = "white";
+                ctx.globalAlpha = 0.6;
+                ctx.beginPath();
+                ctx.moveTo(vertX + 15, p.y);
+                ctx.lineTo(p.x, p.y - 10);
+                ctx.lineTo(p.x, p.y + 10);
+                ctx.closePath();
+                ctx.fill();
+                ctx.restore();
+            });
+
+            ctx.fillStyle = '#38bdf8';
+            segments.forEach((s, idx) => {
+                ctx.fillRect(s.x, s.top - 4, SEGMENT_WIDTH + 1, 4);
+                ctx.fillRect(s.x, s.bottom, SEGMENT_WIDTH + 1, 4);
+                if (idx < segments.length - 1) {
+                    let next = segments[idx + 1];
+                    if (Math.abs(s.top - next.top) > 1) ctx.fillRect(next.x - 1, Math.min(s.top, next.top), 2, Math.abs(s.top - next.top));
+                    if (Math.abs(s.bottom - next.bottom) > 1) ctx.fillRect(next.x - 1, Math.min(s.bottom, next.bottom), 2, Math.abs(s.bottom - next.bottom));
+                }
+            });
+
+            ctx.save();
+            ctx.translate(ball.x, ball.y);
+            ctx.scale(ball.scaleX, ball.scaleY);
+
+            if (isShieldActive) {
+                ctx.save();
+                const pulse = Math.sin(frameCount * 0.2) * 5;
+                ctx.shadowBlur = 25 + pulse;
+                ctx.shadowColor = "#38bdf8";
+                ctx.strokeStyle = "rgba(56, 189, 248, 0.8)";
+                ctx.lineWidth = 6;
+                ctx.lineCap = 'round';
+                ctx.beginPath();
+                ctx.arc(0, 0, BALL_RADIUS + 15, -Math.PI / 2.5, Math.PI / 2.5);
+                ctx.stroke();
+                ctx.strokeStyle = "rgba(255, 255, 255, 0.6)";
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.arc(0, 0, BALL_RADIUS + 12, -Math.PI / 3, Math.PI / 3);
+                ctx.stroke();
+                for (let i = 0; i < 3; i++) {
+                    let angle = (frameCount * 0.1 + (i * Math.PI * 2 / 3)) % (Math.PI * 2);
+                    if (angle > -Math.PI / 2 && angle < Math.PI / 2) {
+                        ctx.fillStyle = "#fff";
+                        ctx.beginPath();
+                        ctx.arc((BALL_RADIUS + 20) * Math.cos(angle), (BALL_RADIUS + 20) * Math.sin(angle), 2, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                }
+                ctx.restore();
+            }
+
+            ctx.beginPath(); ctx.arc(0, 0, BALL_RADIUS, 0, Math.PI * 2);
+            ctx.fillStyle = BALL_COLOR; ctx.shadowBlur = 20; ctx.shadowColor = BALL_COLOR; ctx.fill();
+            ctx.beginPath(); ctx.arc(0, 0, BALL_RADIUS * 0.6, 0, Math.PI * 2);
+            ctx.fillStyle = '#fff'; ctx.globalAlpha = 0.8; ctx.fill();
+            ctx.restore();
+
+            if (isPaused && screens.pause.classList.contains('active')) {
+                ctx.fillStyle = 'rgba(0,0,0,0.4)';
+                ctx.fillRect(-1000, -1000, V_WIDTH + 2000, V_HEIGHT + 2000);
+            }
+
+            // --- TUTORIAL PHASE 1 DIMMING OVERLAY ---
+            if (gameMode === 'tutorial' && tutorialPhase === 1) {
+                // Dim the entire screen
+                ctx.fillStyle = 'rgba(15, 23, 42, 0.85)';
+                ctx.fillRect(-1000, -1000, V_WIDTH + 2000, V_HEIGHT + 2000);
+
+                // Redraw the Red Line (Dead Zone) on top so it appears focused
+                drawDeadZone(ctx);
+            }
+        }
+
+        function gameLoop(now) {
+            if (!lastTime) lastTime = now;
+            const dt = Math.min(2, (now - lastTime) / 16.67);
+            lastTime = now;
+            update(dt);
+            draw();
+            requestAnimationFrame(gameLoop);
+        }
+
+        function endGame(reason = 'crash') {
+            if (!gameActive) return;
+            gameActive = false; isPaused = false;
+            createBurst(ball.x, ball.y);
+            gameWrapper.classList.add('shaking');
+            gameWrapper.style.transform = `rotateX(0deg)`;
+
+            AC.play(reason);
+            if (navigator.vibrate) navigator.vibrate([200, 100, 200]);
+
+            showScreen('gameOver');
+
+            document.getElementById('gameOverTitle').innerText = "Journey Ended";
+            document.getElementById('gameOverTitle').style.color = "#ef4444";
+            document.getElementById('finalScore').innerText = `You drifted ${score} meters.`;
+
+            const finalTimeMs = accumulatedTime + (Date.now() - levelStartTime);
+            const timeSec = (finalTimeMs / 1000).toFixed(1);
+            const statsEl = document.getElementById('missionStats');
+            statsEl.style.display = 'block';
+            statsEl.innerText = `Time: ${timeSec}s | Flips: ${gravityFlips}`;
+
+            if (gameMode === 'unlimited') {
+                if (score > bestScore) {
+                    bestScore = score;
+                }
+                document.getElementById('bestScoreEnd').style.display = 'block';
+                document.getElementById('bestScoreEnd').innerText = `Best Journey: ${bestScore}m`;
+            } else {
+                document.getElementById('bestScoreEnd').style.display = 'none';
+            }
+
+            document.getElementById('gameOverBtnGroup').style.display = 'flex';
+            document.getElementById('missionSuccessBtnGroup').style.display = 'none';
+            document.getElementById('star-rating-panel').style.display = 'none';
+
+            setTimeout(() => gameWrapper.classList.remove('shaking'), 200);
+        }
+
+        function calculateStars(timeSec, flips) {
+            const limits = getChallengeLimits(currentLevel);
+            const timeLimit = limits.timeLimit;
+            const flipLimit = limits.flipLimit;
+
+            let stars = 1;
+            if (timeSec <= timeLimit) stars++;
+            if (flips <= flipLimit) stars++;
+
+            return stars;
+        }
+
+        function winLevel() {
+            if (!gameActive) return;
+            gameActive = false; isPaused = false;
+            gameWrapper.style.transform = `rotateX(0deg)`;
+
+            showScreen('gameOver');
+
+            const finalTimeMs = accumulatedTime + (Date.now() - levelStartTime);
+            const timeSec = (finalTimeMs / 1000).toFixed(1);
+            const stars = calculateStars(parseFloat(timeSec), gravityFlips);
+
+            if (!levelStars[currentLevel] || stars > levelStars[currentLevel]) {
+                levelStars[currentLevel] = stars;
+                localStorage.setItem('gravityDrift_stars', JSON.stringify(levelStars));
+            }
+
+            document.getElementById('gameOverTitle').innerText = "Mission Success!";
+            document.getElementById('gameOverTitle').style.color = "#22c55e";
+            document.getElementById('finalScore').innerText = `Level ${currentLevel} Complete!`;
+
+            const statsEl = document.getElementById('missionStats');
+            statsEl.style.display = 'block';
+            statsEl.innerText = `Time: ${timeSec}s | Flips: ${gravityFlips}`;
+
             document.getElementById('bestScoreEnd').style.display = 'none';
+            document.getElementById('gameOverBtnGroup').style.display = 'none';
+            document.getElementById('missionSuccessBtnGroup').style.display = 'flex';
+
+            const starPanel = document.getElementById('star-rating-panel');
+            starPanel.style.display = 'flex';
+            const starSvgs = starPanel.querySelectorAll('.star-item');
+            starSvgs.forEach((s, i) => {
+                s.classList.remove('earned');
+                if (i < stars) {
+                    setTimeout(() => s.classList.add('earned'), 300 + (i * 200));
+                }
+            });
+
+            document.getElementById('btnNextLevel').style.display = currentLevel >= 20 ? 'none' : 'block';
         }
 
-        document.getElementById('gameOverBtnGroup').style.display = 'flex';
-        document.getElementById('missionSuccessBtnGroup').style.display = 'none';
-        document.getElementById('star-rating-panel').style.display = 'none';
+        function triggerGravityFlip() {
+            let onWall = getOnWall();
+            if (onWall || canFlipMidAir) {
+                gravityDir *= -1;
+                ball.vx = 3.5;
+                canFlipMidAir = onWall;
+                createBurst(ball.x, ball.y);
+                gameWrapper.style.transform = `rotateX(${gravityDir > 0 ? '1.5deg' : '-1.5deg'})`;
+                gravityFlips++;
+                AC.play('flip'); // Added Sound Effect
+                if (gameMode === 'level') updateChallengeUI();
 
-        setTimeout(() => gameWrapper.classList.remove('shaking'), 200);
-    }
-
-    function calculateStars(timeSec, flips) {
-        const limits = getChallengeLimits(currentLevel);
-        const timeLimit = limits.timeLimit;
-        const flipLimit = limits.flipLimit;
-
-        let stars = 1; 
-        if (timeSec <= timeLimit) stars++; 
-        if (flips <= flipLimit) stars++; 
-
-        return stars;
-    }
-
-    function winLevel() {
-        if (!gameActive) return;
-        gameActive = false; isPaused = false;
-        gameWrapper.style.transform = `rotateX(0deg)`; 
-        
-        showScreen('gameOver');
-
-        const finalTimeMs = accumulatedTime + (Date.now() - levelStartTime);
-        const timeSec = (finalTimeMs / 1000).toFixed(1);
-        const stars = calculateStars(parseFloat(timeSec), gravityFlips);
-
-        if(!levelStars[currentLevel] || stars > levelStars[currentLevel]) {
-            levelStars[currentLevel] = stars;
-            localStorage.setItem('gravityDrift_stars', JSON.stringify(levelStars));
+                // Tutorial Phase Advance
+                if (gameMode === 'tutorial' && tutorialPhase === 2) {
+                    tutorialPhase = 3;
+                    updateTutorialUI();
+                }
+            }
         }
 
-        document.getElementById('gameOverTitle').innerText = "Mission Success!";
-        document.getElementById('gameOverTitle').style.color = "#22c55e";
-        document.getElementById('finalScore').innerText = `Level ${currentLevel} Complete!`;
-        
-        const statsEl = document.getElementById('missionStats');
-        statsEl.style.display = 'block';
-        statsEl.innerText = `Time: ${timeSec}s | Flips: ${gravityFlips}`;
+        function triggerJump() {
+            if (getOnWall()) {
+                ball.vy = -12 * gravityDir;
+                createBurst(ball.x, ball.y);
+                AC.play('jump'); // Added Sound Effect
 
-        document.getElementById('bestScoreEnd').style.display = 'none';
-        document.getElementById('gameOverBtnGroup').style.display = 'none';
-        document.getElementById('missionSuccessBtnGroup').style.display = 'flex';
-        
-        const starPanel = document.getElementById('star-rating-panel');
-        starPanel.style.display = 'flex';
-        const starSvgs = starPanel.querySelectorAll('.star-item');
-        starSvgs.forEach((s, i) => {
-            s.classList.remove('earned');
-            if (i < stars) {
-                setTimeout(() => s.classList.add('earned'), 300 + (i * 200));
+                // Tutorial Phase Advance
+                if (gameMode === 'tutorial' && tutorialPhase === 3) {
+                    tutorialPhase = 4;
+                    updateTutorialUI();
+                }
+            }
+        }
+
+        const handleInputDown = (clientX) => {
+            AC.init(); // Ensure audio context starts on user gesture
+
+            // Handle Tutorial Start Tap
+            if (gameMode === 'tutorial' && tutorialPhase === 1) {
+                isPaused = false;
+                tutorialPhase = 2;
+                updateTutorialUI();
+                return;
+            }
+
+            if (!gameActive || isPaused) return;
+            const scale = Math.min(canvas.width / V_WIDTH, canvas.height / V_HEIGHT);
+            const offsetX = (canvas.width - V_WIDTH * scale) / 2;
+            const rect = canvas.getBoundingClientRect();
+            const redLineScreenX = rect.left + offsetX + (DEAD_ZONE_X * scale);
+
+            if (clientX <= redLineScreenX) {
+                triggerGravityFlip();
+            } else {
+                const now = Date.now();
+                if (now - lastTouchTime < 300) {
+                    isDashing = !isDashing;
+                    if (isDashing) AC.play('dash');
+                    createBurst(ball.x, ball.y, isDashing ? '#fde047' : '#4ade80');
+
+                    // Tutorial Phase Advance for Dash
+                    if (gameMode === 'tutorial' && tutorialPhase === 4 && isDashing) {
+                        tutorialPhase = 5;
+                        updateTutorialUI();
+                    }
+
+                } else {
+                    triggerJump();
+                }
+                lastTouchTime = now;
+            }
+        };
+
+        let lastMidClickTime = 0;
+        window.addEventListener('contextmenu', e => e.preventDefault());
+
+        window.addEventListener('mousedown', (e) => {
+            if (e.target.closest('#btnPause') || e.target.closest('#btnShield') || e.target.closest('.screen')) return;
+
+            AC.init();
+            if (gameMode === 'tutorial' && tutorialPhase === 1) {
+                isPaused = false;
+                tutorialPhase = 2;
+                updateTutorialUI();
+                return;
+            }
+
+            if (!gameActive || isPaused) return;
+
+            if (e.button === 0) {
+                triggerGravityFlip();
+            } else if (e.button === 2) {
+                triggerJump();
+            } else if (e.button === 1) {
+                const now = Date.now();
+                if (now - lastMidClickTime < 300) {
+                    toggleShield();
+                } else {
+                    isDashing = !isDashing;
+                    if (isDashing) AC.play('dash');
+                    createBurst(ball.x, ball.y, isDashing ? '#fde047' : '#4ade80');
+                    if (gameMode === 'tutorial' && tutorialPhase === 4 && isDashing) {
+                        tutorialPhase = 5;
+                        updateTutorialUI();
+                    }
+                }
+                lastMidClickTime = now;
             }
         });
 
-        document.getElementById('btnNextLevel').style.display = currentLevel >= 20 ? 'none' : 'block';
-    }
-
-    function triggerGravityFlip() {
-        let onWall = getOnWall();
-        if (onWall || canFlipMidAir) {
-            gravityDir *= -1;
-            ball.vx = 3.5; 
-            canFlipMidAir = onWall; 
-            createBurst(ball.x, ball.y);
-            gameWrapper.style.transform = `rotateX(${gravityDir > 0 ? '1.5deg' : '-1.5deg'})`;
-            gravityFlips++;
-            AC.play('flip'); // Added Sound Effect
-            if (gameMode === 'level') updateChallengeUI();
-            
-            // Tutorial Phase Advance
-            if (gameMode === 'tutorial' && tutorialPhase === 2) {
-                tutorialPhase = 3;
-                updateTutorialUI();
+        window.addEventListener('touchstart', (e) => {
+            if (e.target.closest('#btnPause') || e.target.closest('#btnShield') || e.target.closest('.screen')) return;
+            if (gameActive) { // Removing !isPaused check here to allow unpausing tutorial phase 1 via tap
+                e.preventDefault();
+                handleInputDown(e.touches[0].clientX);
             }
-        }
-    }
+        }, { passive: false });
 
-    function triggerJump() {
-        if (getOnWall()) {
-            ball.vy = -12 * gravityDir; 
-            createBurst(ball.x, ball.y);
-            AC.play('jump'); // Added Sound Effect
-            
-            // Tutorial Phase Advance
-            if (gameMode === 'tutorial' && tutorialPhase === 3) {
-                tutorialPhase = 4;
+        window.addEventListener('keydown', (e) => {
+            AC.init(); // Ensure audio context starts on key press
+            // Handle Tutorial Start Key
+            if (gameMode === 'tutorial' && tutorialPhase === 1) {
+                isPaused = false;
+                tutorialPhase = 2;
                 updateTutorialUI();
+                return;
             }
-        }
-    }
 
-    const handleInputDown = (clientX) => {
-        AC.init(); // Ensure audio context starts on user gesture
-        
-        // Handle Tutorial Start Tap
-        if (gameMode === 'tutorial' && tutorialPhase === 1) {
-            isPaused = false;
-            tutorialPhase = 2;
-            updateTutorialUI();
-            return;
-        }
+            // Debug cheat - Commented out
+            /*
+            if(e.code === 'Backspace') {
+                frameCount += 1000; 
+                createBurst(ball.x, ball.y, '#fbbf24'); 
+            }
+            */
 
-        if (!gameActive || isPaused) return;
-        const scale = Math.min(canvas.width / V_WIDTH, canvas.height / V_HEIGHT);
-        const offsetX = (canvas.width - V_WIDTH * scale) / 2;
-        const rect = canvas.getBoundingClientRect();
-        const redLineScreenX = rect.left + offsetX + (DEAD_ZONE_X * scale);
+            if (!gameActive && screens.gameOver.classList.contains('active')) {
+                if (e.code === 'Space' || e.code === 'Enter') {
+                    if (document.getElementById('missionSuccessBtnGroup').style.display === 'flex') {
+                        document.getElementById('btnNextLevel').click();
+                    } else {
+                        document.getElementById('btnRetry').click();
+                    }
+                    return;
+                }
+            }
 
-        if (clientX <= redLineScreenX) {
-            triggerGravityFlip();
-        } else {
-            const now = Date.now();
-            if (now - lastTouchTime < 300) {
+            if (!gameActive) return;
+            if (isPaused) {
+                if (e.code === 'Escape' || e.code === 'KeyP') togglePause();
+                return;
+            }
+
+            if (e.code === 'Space') triggerGravityFlip();
+            if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
                 isDashing = !isDashing;
-                if(isDashing) AC.play('dash');
-                createBurst(ball.x, ball.y, isDashing ? '#fde047' : '#4ade80');
-                
-                // Tutorial Phase Advance for Dash
+                if (isDashing) AC.play('dash');
+                // Tutorial Phase Advance for Dash Key
                 if (gameMode === 'tutorial' && tutorialPhase === 4 && isDashing) {
                     tutorialPhase = 5;
                     updateTutorialUI();
                 }
-
-            } else {
-                triggerJump();
             }
-            lastTouchTime = now;
-        }
-    };
-
-    window.addEventListener('mousedown', (e) => {
-        if (e.target.closest('#btnPause') || e.target.closest('#btnShield') || e.target.closest('.screen')) return;
-        handleInputDown(e.clientX);
-    });
-
-    window.addEventListener('touchstart', (e) => { 
-        if (e.target.closest('#btnPause') || e.target.closest('#btnShield') || e.target.closest('.screen')) return;
-        if(gameActive) { // Removing !isPaused check here to allow unpausing tutorial phase 1 via tap
-            e.preventDefault(); 
-            handleInputDown(e.touches[0].clientX); 
-        }
-    }, {passive: false});
-
-    window.addEventListener('keydown', (e) => {
-        AC.init(); // Ensure audio context starts on key press
-        // Handle Tutorial Start Key
-        if (gameMode === 'tutorial' && tutorialPhase === 1) {
-             isPaused = false;
-             tutorialPhase = 2;
-             updateTutorialUI();
-             return;
-        }
-
-        // Debug cheat - Commented out
-        
-        if(e.code === 'Backspace') {
-            frameCount += 1000; 
-            createBurst(ball.x, ball.y, '#fbbf24'); 
-        }
-        
-         
-        if (!gameActive && screens.gameOver.classList.contains('active')) {
-            if (e.code === 'Space' || e.code === 'Enter') {
-                if (document.getElementById('missionSuccessBtnGroup').style.display === 'flex') {
-                    document.getElementById('btnNextLevel').click();
-                } else {
-                    document.getElementById('btnRetry').click();
-                }
-                return;
-            }
-        }
-
-        if (!gameActive) return;
-        if (isPaused) {
+            if (e.code === 'KeyW' || e.code === 'ArrowUp') triggerJump();
             if (e.code === 'Escape' || e.code === 'KeyP') togglePause();
-            return;
-        }
+            if (e.code === 'Enter') toggleShield();
+        });
 
-        if(e.code === 'Space') triggerGravityFlip(); 
-        if(e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
-            isDashing = !isDashing;
-            if(isDashing) AC.play('dash');
-            // Tutorial Phase Advance for Dash Key
-            if (gameMode === 'tutorial' && tutorialPhase === 4 && isDashing) {
-                tutorialPhase = 5;
-                updateTutorialUI();
+        btnPause.addEventListener('mousedown', (e) => togglePause(e));
+        btnPause.addEventListener('touchstart', (e) => togglePause(e), { passive: false });
+
+        btnShield.addEventListener('mousedown', (e) => toggleShield(e));
+        btnShield.addEventListener('touchstart', (e) => toggleShield(e), { passive: false });
+
+        document.getElementById('btnYesIntro').onclick = () => {
+            AC.init();
+            document.getElementById('introPromptPanel').style.display = 'none';
+            localStorage.setItem('natureDrift_intro_prompted', 'true');
+            startTutorial();
+        };
+        document.getElementById('btnNoIntro').onclick = () => {
+            AC.init();
+            document.getElementById('introPromptPanel').style.display = 'none';
+            localStorage.setItem('natureDrift_intro_prompted', 'true');
+            localStorage.setItem('natureDrift_tutorial_complete', 'true');
+        };
+        document.getElementById('btnToStart').onclick = () => {
+            AC.init();
+            let totalStars = Object.values(levelStars).reduce((a, b) => a + b, 0);
+            if (totalStars >= 10) {
+                gameMode = 'unlimited'; resetGame(); gameActive = true; showScreen('game');
             }
-        }
-        if(e.code === 'KeyW' || e.code === 'ArrowUp') triggerJump();
-        if(e.code === 'Escape' || e.code === 'KeyP') togglePause();
-        if(e.code === 'Enter') toggleShield();
-    });
-
-    btnPause.addEventListener('mousedown', (e) => togglePause(e));
-    btnPause.addEventListener('touchstart', (e) => togglePause(e), {passive: false});
-
-    btnShield.addEventListener('mousedown', (e) => toggleShield(e));
-    btnShield.addEventListener('touchstart', (e) => toggleShield(e), {passive: false});
-
-    document.getElementById('btnToStart').onclick = () => { 
-        AC.init();
-        let totalStars = Object.values(levelStars).reduce((a, b) => a + b, 0);
-        if(totalStars >= 10) {
-            gameMode = 'unlimited'; resetGame(); gameActive = true; showScreen('game'); 
-        }
-    };
-    document.getElementById('btnToLevels').onclick = () => { AC.init(); showScreen('levels'); };
-    document.getElementById('btnBackToHome').onclick = () => { showScreen('home'); };
-    document.getElementById('btnRetry').onclick = () => { resetGame(); gameActive = true; showScreen('game'); };
-    document.getElementById('btnExit').onclick = () => { gameActive = false; showScreen('home'); resetMenuBackground(); };
-    document.getElementById('btnResume').onclick = () => togglePause();
-    document.getElementById('btnPauseExit').onclick = () => { gameActive = false; isPaused = false; showScreen('home'); resetMenuBackground(); };
-    document.getElementById('btnRetryMission').onclick = () => { resetGame(); gameActive = true; showScreen('game'); };
-    document.getElementById('btnMissionExit').onclick = () => { gameActive = false; showScreen('home'); resetMenuBackground(); };
-    document.getElementById('btnNextLevel').onclick = () => {
-        if (currentLevel < 20) {
-            currentLevel++;
-            resetGame();
-            gameActive = true;
-            showScreen('game');
-        }
-    };
-
-    // --- AUDIO CONTROLLER ---
-    const AC = {
-        ctx: null,
-        masterGain: null,
-
-        init: function() {
-            if (!this.ctx) {
-                const AudioContext = window.AudioContext || window.webkitAudioContext;
-                this.ctx = new AudioContext();
-                this.masterGain = this.ctx.createGain();
-                this.masterGain.gain.value = 0.3; // Main Volume
-                this.masterGain.connect(this.ctx.destination);
+        };
+        document.getElementById('btnToLevels').onclick = () => { AC.init(); showScreen('levels'); };
+        document.getElementById('btnBackToHome').onclick = () => { showScreen('home'); };
+        document.getElementById('btnRetry').onclick = () => { resetGame(); gameActive = true; showScreen('game'); };
+        document.getElementById('btnExit').onclick = () => { gameActive = false; showScreen('home'); resetMenuBackground(); };
+        document.getElementById('btnResume').onclick = () => togglePause();
+        document.getElementById('btnPauseExit').onclick = () => { gameActive = false; isPaused = false; showScreen('home'); resetMenuBackground(); };
+        document.getElementById('btnRetryMission').onclick = () => { resetGame(); gameActive = true; showScreen('game'); };
+        document.getElementById('btnMissionExit').onclick = () => { gameActive = false; showScreen('home'); resetMenuBackground(); };
+        document.getElementById('btnNextLevel').onclick = () => {
+            if (currentLevel < 20) {
+                currentLevel++;
+                resetGame();
+                gameActive = true;
+                showScreen('game');
             }
-            if (this.ctx.state === 'suspended') {
-                this.ctx.resume();
+        };
+
+        // --- AUDIO CONTROLLER ---
+        const AC = {
+            ctx: null,
+            masterGain: null,
+
+            init: function () {
+                if (!this.ctx) {
+                    const AudioContext = window.AudioContext || window.webkitAudioContext;
+                    this.ctx = new AudioContext();
+                    this.masterGain = this.ctx.createGain();
+                    this.masterGain.gain.value = 0.3; // Main Volume
+                    this.masterGain.connect(this.ctx.destination);
+                }
+                if (this.ctx.state === 'suspended') {
+                    this.ctx.resume();
+                }
+            },
+
+            playTone: function (freq, type, duration, vol = 0.5, slideTo = null) {
+                if (!this.ctx) return;
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.type = type;
+                osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+                if (slideTo) {
+                    osc.frequency.exponentialRampToValueAtTime(slideTo, this.ctx.currentTime + duration);
+                }
+                gain.gain.setValueAtTime(vol, this.ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + duration);
+
+                osc.connect(gain);
+                gain.connect(this.masterGain);
+                osc.start();
+                osc.stop(this.ctx.currentTime + duration);
+            },
+
+            playNoise: function (duration, type = 'white') {
+                if (!this.ctx) return;
+                const bufferSize = this.ctx.sampleRate * duration;
+                const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+                const data = buffer.getChannelData(0);
+                for (let i = 0; i < bufferSize; i++) {
+                    data[i] = Math.random() * 2 - 1;
+                }
+
+                const noise = this.ctx.createBufferSource();
+                noise.buffer = buffer;
+                const gain = this.ctx.createGain();
+
+                // Simple lowpass for "thud" sounds
+                const filter = this.ctx.createBiquadFilter();
+                filter.type = type === 'brown' ? 'lowpass' : 'highpass';
+                filter.frequency.value = type === 'brown' ? 200 : 1000;
+
+                gain.gain.setValueAtTime(0.5, this.ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + duration);
+
+                noise.connect(filter);
+                filter.connect(gain);
+                gain.connect(this.masterGain);
+                noise.start();
+            },
+
+            play: function (id) {
+                if (!this.ctx) return;
+                switch (id) {
+                    case 'flip':
+                        // Futuristic Swoosh
+                        this.playTone(100, 'sine', 0.25, 0.4, 600);
+                        break;
+                    case 'jump':
+                        // Snappy rising jump sound
+                        this.playTone(300, 'triangle', 0.15, 0.3, 550);
+                        break;
+                    case 'dash':
+                        // Slide whistle up
+                        this.playTone(300, 'triangle', 0.4, 0.4, 800);
+                        break;
+                    case 'shieldOn':
+                        this.playTone(220, 'sine', 0.5, 0.3);
+                        setTimeout(() => this.playTone(440, 'sine', 0.5, 0.3), 100);
+                        setTimeout(() => this.playTone(880, 'sine', 0.8, 0.3), 200);
+                        break;
+                    case 'shieldOff':
+                        this.playTone(880, 'sine', 0.3, 0.3);
+                        setTimeout(() => this.playTone(440, 'sine', 0.3, 0.3), 100);
+                        break;
+                    case 'redline': // Heavy crash
+                        this.playNoise(0.5, 'brown');
+                        this.playTone(100, 'sawtooth', 0.4, 0.5, 50);
+                        break;
+                    case 'spike': // Metallic crunch
+                        this.playNoise(0.2, 'white');
+                        this.playTone(150, 'square', 0.1, 0.3);
+                        break;
+                    case 'wasp': // Buzz down
+                        this.playTone(400, 'sawtooth', 0.4, 0.4, 100);
+                        break;
+                    case 'pulseHit': // Electric zap
+                        this.playTone(800, 'sawtooth', 0.1, 0.3, 1200);
+                        this.playNoise(0.1, 'white');
+                        break;
+                    case 'pulseAmbient':
+                        // Very low subtle hum
+                        this.playTone(100, 'sine', 0.1, 0.05);
+                        break;
+                }
             }
-        },
+        };
 
-        playTone: function(freq, type, duration, vol = 0.5, slideTo = null) {
-            if(!this.ctx) return;
-            const osc = this.ctx.createOscillator();
-            const gain = this.ctx.createGain();
-            osc.type = type;
-            osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
-            if(slideTo) {
-                osc.frequency.exponentialRampToValueAtTime(slideTo, this.ctx.currentTime + duration);
-            }
-            gain.gain.setValueAtTime(vol, this.ctx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + duration);
-            
-            osc.connect(gain);
-            gain.connect(this.masterGain);
-            osc.start();
-            osc.stop(this.ctx.currentTime + duration);
-        },
-
-        playNoise: function(duration, type = 'white') {
-            if(!this.ctx) return;
-            const bufferSize = this.ctx.sampleRate * duration;
-            const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
-            const data = buffer.getChannelData(0);
-            for (let i = 0; i < bufferSize; i++) {
-                data[i] = Math.random() * 2 - 1;
-            }
-
-            const noise = this.ctx.createBufferSource();
-            noise.buffer = buffer;
-            const gain = this.ctx.createGain();
-            
-            // Simple lowpass for "thud" sounds
-            const filter = this.ctx.createBiquadFilter();
-            filter.type = type === 'brown' ? 'lowpass' : 'highpass';
-            filter.frequency.value = type === 'brown' ? 200 : 1000;
-
-            gain.gain.setValueAtTime(0.5, this.ctx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + duration);
-            
-            noise.connect(filter);
-            filter.connect(gain);
-            gain.connect(this.masterGain);
-            noise.start();
-        },
-
-        play: function(id) {
-            if(!this.ctx) return;
-            switch(id) {
-                case 'flip':
-                    // Futuristic Swoosh
-                    this.playTone(100, 'sine', 0.25, 0.4, 600);
-                    break;
-                case 'jump':
-                    // Snappy rising jump sound
-                    this.playTone(300, 'triangle', 0.15, 0.3, 550);
-                    break;
-                case 'dash':
-                    // Slide whistle up
-                    this.playTone(300, 'triangle', 0.4, 0.4, 800);
-                    break;
-                case 'shieldOn':
-                    this.playTone(220, 'sine', 0.5, 0.3);
-                    setTimeout(() => this.playTone(440, 'sine', 0.5, 0.3), 100);
-                    setTimeout(() => this.playTone(880, 'sine', 0.8, 0.3), 200);
-                    break;
-                case 'shieldOff':
-                    this.playTone(880, 'sine', 0.3, 0.3);
-                    setTimeout(() => this.playTone(440, 'sine', 0.3, 0.3), 100);
-                    break;
-                case 'redline': // Heavy crash
-                    this.playNoise(0.5, 'brown');
-                    this.playTone(100, 'sawtooth', 0.4, 0.5, 50);
-                    break;
-                case 'spike': // Metallic crunch
-                    this.playNoise(0.2, 'white');
-                    this.playTone(150, 'square', 0.1, 0.3);
-                    break;
-                case 'wasp': // Buzz down
-                    this.playTone(400, 'sawtooth', 0.4, 0.4, 100);
-                    break;
-                case 'pulseHit': // Electric zap
-                    this.playTone(800, 'sawtooth', 0.1, 0.3, 1200);
-                    this.playNoise(0.1, 'white');
-                    break;
-                case 'pulseAmbient':
-                    // Very low subtle hum
-                    this.playTone(100, 'sine', 0.1, 0.05);
-                    break;
-            }
-        }
-    };
-
-    window.onload = init;
-</script>
+        window.onload = init;
+    </script>
 </body>
 
 </html>
